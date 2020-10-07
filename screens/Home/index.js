@@ -9,6 +9,8 @@ import {
     Image,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import CardProduct from '../../components/cardProduct'
+
 
 
 export class Home extends Component {
@@ -38,27 +40,25 @@ export class Home extends Component {
                                 Des légumes et des Viandes 100% Bio...
                             </Text>
                             <View style={styles.boxSliders} >
-                                <ScrollView>
-                                    <View style={styles.sliderItem} >
-                                        <View style={styles.imageBox} >
-                                            <Image 
-                                                source={require('../../assets/viande_pack.jpg')} 
-                                                style={styles.imageFile}
-                                            />
-                                        </View>
-                                        <View style={styles.imageTextDescription} >
-                                            <View>
-                                                <Text style={styles.imageDescription} >
-                                                    VIANDE HACHEE
-                                                </Text>
-                                            </View>
-                                            <View>
-                                                <Text style={styles.imagePrice} >
-                                                    5$ par kilos
-                                                </Text>
-                                            </View>  
-                                        </View>
-                                    </View>
+                                <ScrollView 
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    <CardProduct 
+                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageDescription="VIANDE HACHEE"
+                                        imagePrice="5$ par kilos"
+                                    />
+                                    <CardProduct 
+                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageDescription="VIANDE HACHEE"
+                                        imagePrice="5$ par kilos"
+                                    />
+                                    <CardProduct 
+                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageDescription="VIANDE HACHEE"
+                                        imagePrice="5$ par kilos"
+                                    />
                                 </ScrollView>
                             </View>
 
