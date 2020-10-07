@@ -22,7 +22,7 @@ function MyTabs() {
     <Tab.Navigator
         initialRouteName="Home"
         activeColor="#F53E52"
-        inactiveColor="#F53E52"
+        inactiveColor="gray"
         barStyle={{ backgroundColor: 'white', paddingBottom: 3 }}
     >
       <Tab.Screen 
