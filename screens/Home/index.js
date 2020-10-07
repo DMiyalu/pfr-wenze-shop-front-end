@@ -7,11 +7,14 @@ import {
     TextInput, 
     ScrollView,
     Image,
+    Dimensions,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import CardProduct from '../../components/cardProduct'
+import CardProduct from '../../components/CardProduct'
 
 
+
+const { height, width } = Dimensions.get('window')
 
 export class Home extends Component {
     render() {
@@ -61,9 +64,18 @@ export class Home extends Component {
                                     />
                                 </ScrollView>
                             </View>
-
+                            <View style={styles.section} >
+                                <Text style={styles.sectionTitre} >
+                                    Fast food with wiikko
+                                </Text>
+                                <Text style={styles.sectionCategories} >
+                                    Vivres frais & Viandes fraiches
+                                </Text>
+                                <View style={styles.sectionImageBox} >
+                                    <Image style={styles.sectionImage} source={require('../../assets/slide1.jpg')} />
+                                </View>
+                            </View>
                         </View> 
-
                     </ScrollView>
                 </View>
             </SafeAreaView>
@@ -149,5 +161,31 @@ const styles = StyleSheet.create({
     imagePrice: {
         fontWeight: '300',
         color: "rgba(0, 0, 0, 0.4) ",
-    }
+    },
+    section: {
+        marginTop: 40,
+        paddingHorizontal: 20,
+    },
+    sectionCategories: {
+        fontSize: 16,
+        fontWeight: '100',
+    },
+    sectionTitre: {
+        fontSize: 24,
+        fontWeight: '700',
+        marginTop: 10,
+    },
+    sectionImageBox: {
+        width: width - 40,
+        height: 200,
+        marginTop: 20,
+    },
+    sectionImage: {
+        flex: 1,
+        height: null,
+        width: null,resizeMode: "cover",
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: "#dddddd",
+    },
 });

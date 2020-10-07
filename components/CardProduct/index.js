@@ -7,19 +7,19 @@ export class CardProduct extends Component {
             <View style={styles.sliderItem} >
                 <View style={styles.imageBox} >
                     <Image 
-                        source={require('../../assets/viande_pack.jpg')} 
+                        source={this.props.imageUri} 
                         style={styles.imageFile}
                     />
                 </View>
                 <View style={styles.imageTextDescription} >
                     <View>
                         <Text style={styles.imageDescription} >
-                            VIANDE HACHEE
+                            {this.props.imageDescription}
                         </Text>
                     </View>
                     <View>
                         <Text style={styles.imagePrice} >
-                            5$ par kilos
+                            {this.props.imagePrice}
                         </Text>
                     </View>  
                 </View>
