@@ -32,6 +32,7 @@ export class Home extends Component {
                                 placeholder="Du sandwich ?"
                                 placeholderTextColor="gray"
                                 underlineColorAndroid="transparent" 
+                                clearTextOnFocus={true}
                             />
                         </View>
                     </View>
@@ -73,6 +74,36 @@ export class Home extends Component {
                                 </Text>
                                 <View style={styles.sectionImageBox} >
                                     <Image style={styles.sectionImage} source={require('../../assets/slide1.jpg')} />
+                                </View>
+                            </View>
+                            <View style={styles.section} >
+                                <Text style={styles.sectionTitre} >
+                                    All for your lunch
+                                </Text>
+                                <Text style={styles.sectionCategories} >
+                                    Cake & Sandwich
+                                </Text>
+                                <View style={styles.boxSliders} >
+                                    <ScrollView 
+                                        horizontal={true}
+                                        showsHorizontalScrollIndicator={false}
+                                    >
+                                        <CardProduct 
+                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageDescription="VIANDE HACHEE"
+                                            imagePrice="5$ par kilos"
+                                        />
+                                        <CardProduct 
+                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageDescription="VIANDE HACHEE"
+                                            imagePrice="5$ par kilos"
+                                        />
+                                        <CardProduct 
+                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageDescription="VIANDE HACHEE"
+                                            imagePrice="5$ par kilos"
+                                        />
+                                    </ScrollView>
                                 </View>
                             </View>
                         </View> 
@@ -179,11 +210,13 @@ const styles = StyleSheet.create({
         width: width - 40,
         height: 200,
         marginTop: 20,
+        
     },
     sectionImage: {
         flex: 1,
         height: null,
-        width: null,resizeMode: "cover",
+        width: null,
+        resizeMode: "cover",
         borderRadius: 5,
         borderWidth: 1,
         borderColor: "#dddddd",
