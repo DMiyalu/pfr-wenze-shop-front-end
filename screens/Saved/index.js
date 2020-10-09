@@ -24,7 +24,7 @@ export class Saved extends Component {
     }
 
     renderProduct() {
-        return this.state.apiData.map((product) => <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 20, paddingVertical: 20, borderWidth: 1, borderRadius: 3, margin:10 }} >
+        return this.state.apiData.map((product) => <View key={product._id} style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 20, paddingVertical: 20, borderWidth: 1, borderRadius: 3, margin:10 }} >
             <Text> {product.title} </Text>
             <Text> {product.description} </Text>
             <Text> {product.price} </Text>

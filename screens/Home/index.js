@@ -11,12 +11,39 @@ import {
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import CardProduct from '../../components/CardProduct'
-
+import axios from 'axios'
 
 
 const { height, width } = Dimensions.get('window')
 
 export class Home extends Component {
+
+    constructor(props) {
+        super()
+        this.state = {
+            apiData: []
+        }
+    }
+
+    componentWillMount() {
+        axios.get('http://127.0.0.1:8080/product')
+        .then((response) => {
+            this.setState({ apiData: response.data })
+            console.log("Response :", response)
+            console.log("State: ", this.state.apiData);
+        })
+    }
+
+    renderProduct() {
+        return this.state.apiData.map((product) => 
+            <CardProduct 
+                key={product._id}
+                imageUri={require('../../assets/product/fruit1.jpg')}
+                imageDescription={product.description}
+                imagePrice={product.price}
+            />)
+    }
+
     render() {
         return (
             <SafeAreaView style={{flex: 1, backgroundColor: "white"}} >
@@ -49,17 +76,17 @@ export class Home extends Component {
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <CardProduct 
-                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
                                     <CardProduct 
-                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageUri={require('../../assets/product/viande_hachee.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
                                     <CardProduct 
-                                        imageUri={require('../../assets/viande_pack.jpg')}
+                                        imageUri={require('../../assets/product/viande-poulet.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
@@ -73,7 +100,7 @@ export class Home extends Component {
                                     Vivres frais & Viandes fraiches
                                 </Text>
                                 <View style={styles.sectionImageBox} >
-                                    <Image style={styles.sectionImage} source={require('../../assets/slide1.jpg')} />
+                                    <Image style={styles.sectionImage} source={require('../../assets/product/slide1.jpg')} />
                                 </View>
                             </View>
                             <View style={styles.section} >
@@ -89,20 +116,36 @@ export class Home extends Component {
                                         showsHorizontalScrollIndicator={false}
                                     >
                                         <CardProduct 
-                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageUri={require('../../assets/product/fruit1.jpg')}
                                             imageDescription="VIANDE HACHEE"
                                             imagePrice="5$ par kilos"
                                         />
                                         <CardProduct 
-                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageUri={require('../../assets/product/fruit2.jpg')}
                                             imageDescription="VIANDE HACHEE"
                                             imagePrice="5$ par kilos"
                                         />
                                         <CardProduct 
-                                            imageUri={require('../../assets/viande_pack.jpg')}
+                                            imageUri={require('../../assets/product/fruit3.jpg')}
                                             imageDescription="VIANDE HACHEE"
                                             imagePrice="5$ par kilos"
                                         />
+                                    </ScrollView>
+                                </View>
+                            </View>
+                            <View style={styles.section} >
+                                <Text style={styles.sectionTitre} >
+                                    Take delicious foods at your home
+                                </Text>
+                                <Text style={styles.sectionCategories} >
+                                    Cake & Sandwich
+                                </Text>
+                                <View style={styles.boxSliders} >
+                                    <ScrollView 
+                                        horizontal={true}
+                                        showsHorizontalScrollIndicator={false}
+                                    >
+                                        {this.renderProduct()}
                                     </ScrollView>
                                 </View>
                             </View>
@@ -121,7 +164,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     search: {
-
+        paddingBottom: 20,
     },
     mobile: {
         backgroundColor: "rgba(245, 62, 82, 0.6)",
@@ -131,7 +174,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: "white",
-        marginTop: 10,
+        marginTop: 20,
         marginHorizontal: 20,
         height: 35,
         borderRadius: 3,
