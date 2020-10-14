@@ -13,6 +13,7 @@ import axios from 'axios'
 import Header from '../../components/Header'
 
 
+
 const { height, width } = Dimensions.get('window')
 
 export class Home extends Component {
@@ -37,6 +38,7 @@ export class Home extends Component {
         return this.state.apiData.map((product) => 
             <CardProduct 
                 key={product._id}
+            
                 imageUri={require('../../assets/product/fruit1.jpg')}
                 imageDescription={product.description}
                 imagePrice={product.price}
@@ -45,6 +47,7 @@ export class Home extends Component {
 
     render() {
         return (
+            
             <SafeAreaView style={{flex: 1, backgroundColor: "white"}} >
                 <View style={styles.container} >
                     <Header />
@@ -60,7 +63,7 @@ export class Home extends Component {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <CardProduct 
+                                    <CardProduct  
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
@@ -77,7 +80,7 @@ export class Home extends Component {
                                     />
                                 </ScrollView>
                             </View>
-                            <View style={styles.section} >
+                            <View style={styles.section}>
                                 <Text style={styles.sectionTitre} >
                                     Fast food with wiikko
                                 </Text>
@@ -138,6 +141,7 @@ export class Home extends Component {
                     </ScrollView>
                 </View>
             </SafeAreaView>
+
         )
     }
 }

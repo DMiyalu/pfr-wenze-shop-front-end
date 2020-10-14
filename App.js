@@ -1,14 +1,12 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, AppRegistry } from 'react-native';
 import Home from './screens/Home'
 import Saved from './screens/Saved'
 import ShoppingCart from './screens/ShoppingCart'
 import User from './screens/User'
 import About from './screens/About'
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -82,6 +80,7 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
+
 
 export default function App() {
   return (
