@@ -1,34 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, View, Image, StyleSheet } from 'react-native'
 
 
+    const CardProduct = (props) => {
 
-export class CardProduct extends Component {
-    render() {
         return (
-            <View style={styles.sliderItem}>
+            <View 
+                style={styles.sliderItem}
+            >
                 <View style={styles.imageBox} >
                     <Image 
-                        source={this.props.imageUri} 
+                        source={props.imageUri} 
                         style={styles.imageFile}
                     />
                 </View>
                 <View style={styles.imageTextDescription} >
                     <View>
                         <Text style={styles.imageDescription} >
-                            {this.props.imageDescription}
+                            {props.imageDescription}
                         </Text>
                     </View>
                     <View>
                         <Text style={styles.imagePrice} >
-                            {this.props.imagePrice}
+                            {props.imagePrice}
                         </Text>
                     </View>  
                 </View>
             </View>
         )
     }
-}
+
 
 export default CardProduct
 

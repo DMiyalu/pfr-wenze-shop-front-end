@@ -20,7 +20,7 @@ export class Header extends Component {
                         style={styles.textInput}
                         placeholder="Du sandwich ?"
                         placeholderTextColor="gray"
-                        underlineColorAndroid="transparent" 
+                        underlineColorAndroid="transparent"
                         clearTextOnFocus={true}
                     />
                 </View>

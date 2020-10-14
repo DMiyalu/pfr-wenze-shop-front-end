@@ -11,7 +11,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-
 const color="#F53E52"
 
 const Tab = createMaterialBottomTabNavigator();
