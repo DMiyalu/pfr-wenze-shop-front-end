@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, Picker, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import RNPickerSelect from 'react-native-picker-select'
 import Header from '../Header'
 import CardProduct from '../CardProduct'
 const { height, width } = Dimensions.get('window')
 
+const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export class Product extends Component {
+    constructor(porps) {
+        super()
+        this.state = {
+            count: 0,
+            listValueCount: listValueCount
+        }
+    }
+
     render() {
         return (
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
@@ -42,16 +50,15 @@ export class Product extends Component {
                                 </Text>
                             </View>
                             <View>
-                                <RNPickerSelect
-                                    style={{ borderWidth: 4, borderColor: "red", width: 30, marginHorizontal: 2 }}
-                                    onValueChange={(value) => console.log(value)}
-                                
-                                    items={[
-                                        { label: "1", value: 1 },
-                                        { label: "2", value: 1 },
-                                        { label: "3", value: 1 },
-                                    ]}
-                                />
+                            <Picker
+                                selectedValue={this.state.count}
+                                style={{ height: 50, width: 150 }}
+                                onValueChange={(itemValue) => this.setState({ count: itemValue })}
+                            >                              
+                                {this.state.listValueCount.map((value) => 
+                                    <Picker.Item label={value} value={value} />
+                                )}              
+                            </Picker>
                             </View>
                         </View>
                         <View style={styles.quantiteBox}>

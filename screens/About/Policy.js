@@ -3,9 +3,11 @@ import { Text, View, StyleSheet, Dimensions, Image } from 'react-native'
 
 const { height, width } = Dimensions.get('window')
 
-const Policy = ({ navigation }) => {
-        
-        console.log(navigation)
+class Policy extends Component {
+
+    
+    render() {
+        const { navigation } = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.imageBox}>
@@ -13,7 +15,7 @@ const Policy = ({ navigation }) => {
                 </View>
                 <Text 
                     style={styles.textPromo}
-                    onPress={() => navigation.navigate('Product')}
+                    onPress={() => this.props.navigation.navigate('Product')}
                 > 
                     Avec WenzeShop, sala wenze na tshombo !!! 
                 
@@ -21,6 +23,7 @@ const Policy = ({ navigation }) => {
             </View>
         )
     }
+}
 
 
 export default Policy

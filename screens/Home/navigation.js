@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component } from 'react'
 import { 
     Text, 
     View, 
@@ -15,28 +15,29 @@ import Header from '../../components/Header'
 const { height, width } = Dimensions.get('window')
 
 
-const HomeEntry = ({ navigation }) => {
+class HomeEntry extends Component {
+    constructor(props) {
+        super()
+        this.state = {
+            apiData: []
+        }
+    }
 
-    const [apiData, setApiData] = useState([])
-   
-    useEffect( () => {
+    componentWillMount() {
         axios
         .get('http://127.0.0.1:8080/product')
         .then((response) => {
-            setApiData(response.data)
+            this.setState({ apiData: response.data })
             console.log("Response *:", response)
-            console.log("State: ", apiData);
+            console.log("State: ", this.state.apiData);
         })
         .catch((error) => {
             console.log(error)
         })
-     });
-
-    function renderProduct() {
-        return (
-            <Text>Hello</Text>
-        )
     }
+   
+    render() {
+        const { navigation } = this.props
 
         return (
             <SafeAreaView style={{flex: 1, backgroundColor: "white"}} >
@@ -47,7 +48,7 @@ const HomeEntry = ({ navigation }) => {
                     >
                         <View style={styles.mainSliders} >
                             <Text style={styles.textTop} 
-                                onPress={() => navigation.navigate('Product')}
+                                onPress={() => this.props.navigation.navigate('Product')}
                             >
                                 Des légumes et des Viandes 100% Bio...
                             </Text>
@@ -58,12 +59,12 @@ const HomeEntry = ({ navigation }) => {
                                 >
                                     <TouchableOpacity
                                         style={{ flex: 1 }}
-                                        onPress={() => navigation.navigate('Product', {
+                                        onPress={() => this.props.navigation.navigate('Product', {
                                             itemId: 4,
                                         })}
                                     >
                                     <CardProduct
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
@@ -72,10 +73,10 @@ const HomeEntry = ({ navigation }) => {
                                     
                                     <TouchableOpacity
                                         style={{ flex: 1 }}
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                     >
                                     <CardProduct
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
@@ -84,10 +85,10 @@ const HomeEntry = ({ navigation }) => {
 
                                     <TouchableOpacity
                                         style={{ flex: 1 }}
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                     >
                                     <CardProduct
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
@@ -96,10 +97,10 @@ const HomeEntry = ({ navigation }) => {
 
                                     <TouchableOpacity
                                         style={{ flex: 1 }}
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                     >
                                     <CardProduct
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
@@ -117,7 +118,7 @@ const HomeEntry = ({ navigation }) => {
                                 <View style={styles.sectionImageBox} >
                                     <TouchableOpacity style={{ flex: 1, height: 100, width: width - 40 }} onPress={() => navigation.navigate("Product")}>
                                     <Image
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => this.props.navigation.navigate('Product')}
                                         style={styles.sectionImage} 
                                         source={require('../../assets/product/slide1.jpg')} 
                                     />
@@ -166,14 +167,16 @@ const HomeEntry = ({ navigation }) => {
                                         horizontal={true}
                                         showsHorizontalScrollIndicator={false}
                                     >
-                                        {apiData.map((product) => 
+                                        {this.state.apiData.map((product) => 
                                             <TouchableOpacity
                                                 key={product._id}
                                                 style={{ flex: 1 }}
-                                                onPress={() => navigation.navigate('Product')}
+                                                onPress={() => this.props.navigation.navigate('Product', {
+                                                    itemId: product._id
+                                                })}
                                             >
                                                 <CardProduct
-                                                    onPress={() => navigation.navigate('Product')}
+                                                
                                                     imageUri={require('../../assets/product/viande_pack.jpg')}
                                                     imageDescription={product.description}
                                                     imagePrice={product.price}
@@ -189,6 +192,7 @@ const HomeEntry = ({ navigation }) => {
             </SafeAreaView>
 
         )
+    }
 }
 
 export default HomeEntry

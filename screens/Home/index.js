@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Dimensions, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Product from '../../components/Product'
