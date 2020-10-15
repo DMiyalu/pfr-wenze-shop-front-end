@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     price: {
-        fontSize: "16",
+        fontSize: 16,
         color: "rgba(245, 62, 82, 0.6)",
         marginTop: 8,
     },

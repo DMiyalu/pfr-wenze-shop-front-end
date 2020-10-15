@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     mobile: {
         backgroundColor: "rgba(245, 62, 82, 0.6)",
-        height: 26,
+        height: 35,
     },
     box: {
         flexDirection: "row",

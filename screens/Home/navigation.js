@@ -19,25 +19,22 @@ const HomeEntry = ({ navigation }) => {
 
     const [apiData, setApiData] = useState([])
    
-
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8080/product')
-        .then(async(response) => {
-            await setApiData({ apiData: response.data })
-            console.log("Response :", response)
-            console.log("State: ", this.state.apiData);
+    useEffect( () => {
+        axios
+        .get('http://127.0.0.1:8080/product')
+        .then((response) => {
+            setApiData(response.data)
+            console.log("Response *:", response)
+            console.log("State: ", apiData);
         })
-    })
+        .catch((error) => {
+            console.log(error)
+        })
+     });
 
     function renderProduct() {
-        return apiData.map((product) => 
-            <CardProduct 
-                key={product._id}
-            
-                imageUri={require('../../assets/product/fruit1.jpg')}
-                imageDescription={product.description}
-                imagePrice={product.price}
-            />
+        return (
+            <Text>Hello</Text>
         )
     }
 
@@ -59,24 +56,55 @@ const HomeEntry = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
+                                    <TouchableOpacity
+                                        style={{ flex: 1 }}
+                                        onPress={() => navigation.navigate('Product', {
+                                            itemId: 4,
+                                        })}
+                                    >
                                     <CardProduct
                                         onPress={() => navigation.navigate('Product')}
                                         imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
+                                    </TouchableOpacity>
+                                    
+                                    <TouchableOpacity
+                                        style={{ flex: 1 }}
+                                        onPress={() => navigation.navigate('Product')}
+                                    >
                                     <CardProduct
                                         onPress={() => navigation.navigate('Product')}
-                                        imageUri={require('../../assets/product/viande_hachee.jpg')}
+                                        imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={{ flex: 1 }}
+                                        onPress={() => navigation.navigate('Product')}
+                                    >
                                     <CardProduct
                                         onPress={() => navigation.navigate('Product')}
-                                        imageUri={require('../../assets/product/viande-poulet.jpg')}
+                                        imageUri={require('../../assets/product/viande_pack.jpg')}
                                         imageDescription="VIANDE HACHEE"
                                         imagePrice="5$ par kilos"
                                     />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity
+                                        style={{ flex: 1 }}
+                                        onPress={() => navigation.navigate('Product')}
+                                    >
+                                    <CardProduct
+                                        onPress={() => navigation.navigate('Product')}
+                                        imageUri={require('../../assets/product/viande_pack.jpg')}
+                                        imageDescription="VIANDE HACHEE"
+                                        imagePrice="5$ par kilos"
+                                    />
+                                    </TouchableOpacity>
                                 </ScrollView>
                             </View>
                             <View style={styles.section}>
@@ -138,7 +166,20 @@ const HomeEntry = ({ navigation }) => {
                                         horizontal={true}
                                         showsHorizontalScrollIndicator={false}
                                     >
-                                        {renderProduct()}
+                                        {apiData.map((product) => 
+                                            <TouchableOpacity
+                                                key={product._id}
+                                                style={{ flex: 1 }}
+                                                onPress={() => navigation.navigate('Product')}
+                                            >
+                                                <CardProduct
+                                                    onPress={() => navigation.navigate('Product')}
+                                                    imageUri={require('../../assets/product/viande_pack.jpg')}
+                                                    imageDescription={product.description}
+                                                    imagePrice={product.price}
+                                                />
+                                            </TouchableOpacity>
+                                        )}
                                     </ScrollView>
                                 </View>
                             </View>
