@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, Picker, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, Picker, ScrollView, Button } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Header from '../Header'
 import CardProduct from '../CardProduct'
@@ -12,11 +12,15 @@ export class Product extends Component {
         super()
         this.state = {
             count: 0,
-            listValueCount: listValueCount
+            listValueCount: listValueCount,
+            idItem: 0,
         }
     }
 
+    
+
     render() {
+        const { navigation } = this.props
         return (
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
             <View style={styles.container}>
