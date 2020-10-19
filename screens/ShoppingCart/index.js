@@ -7,7 +7,7 @@ import { getPanier, renderPanier } from '../../Redux/Panier/panier.actions'
 const ShoppingCart = () => {
     const dispatch = useDispatch()
     const { panier, loading } = useSelector((state) => state.panier)
-    const newPanier = ['or']
+    const newPanier = {title: "orange", price: 5000}
 
     useEffect(() => {
         dispatch(getPanier(newPanier));
@@ -20,7 +20,7 @@ const ShoppingCart = () => {
                    
                         <Text> Chargement... </Text>
                     
-                        <Text> Redux: {newPanier} </Text>
+                        <Text> Redux: {panier.price} </Text>
             
                 </View>
             </View>
