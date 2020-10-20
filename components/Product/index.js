@@ -71,6 +71,7 @@ export class Product extends Component {
                                     name="checkbox-blank-circle" color="rgba(0, 0, 200, 0.6)" size={10}
                                 />
                             </View>
+                            
                             <View>
                                 <Text 
                                     style={{ marginHorizontal: 5, fontSize: 14 }}
