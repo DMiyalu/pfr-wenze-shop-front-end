@@ -119,22 +119,6 @@ export class Product extends Component {
                             </View>
                     </View>
                 </View>
-                <View>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                </View>
-                <View>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                </View>
-                <View>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                </View>
-                <View>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                    <Text>Lorem ipsum dolor sit amet</Text>
-                </View>
             </View>
             </ScrollView>
         )
@@ -148,6 +132,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         backgroundColor: "white",
+        paddingBottom: 60,
     },
     main: {
         display: "flex",
