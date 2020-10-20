@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Dimensions, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Policy from './Policy'
-import Product from '../../components/Product'
 const Stack = createStackNavigator();
 const { height, width } = Dimensions.get('window')
 
@@ -36,7 +35,6 @@ export class About extends Component {
                 <NavigationContainer independent={true}>
                     <Stack.Navigator initialRouteName="ScreenA">
                         <Stack.Screen name="Policy" component={Policy} options={{ headerShown: false }} />
-                        <Stack.Screen name="Product" component={Product} options={{ headerShown: false }} />
                     </Stack.Navigator>
                 </NavigationContainer>
         )

@@ -1,28 +1,43 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Dimensions, Image } from 'react-native'
+import { 
+    Text, 
+    View, 
+    StyleSheet, 
+    Dimensions, 
+    SafeAreaView, 
+    Image,
+    ScrollView
+} from 'react-native'
 
 const { height, width } = Dimensions.get('window')
 
-class Policy extends Component {
-
-    
-    render() {
-        const { navigation } = this.props;
-        return (
-            <View style={styles.container}>
-                <View style={styles.imageBox}>
-                    <Image style={styles.imageFile} source={require('../../assets/product/orange.jpg')} />
+const Policy = () => {
+    return (
+        <SafeAreaView style={styles.container}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
+                    <Text style={styles.textHeader}>WenzeShop, avec vous, partout.</Text>
                 </View>
-                <Text 
-                    style={styles.textPromo}
-                    onPress={() => this.props.navigation.navigate('Product')}
-                > 
-                    Avec WenzeShop, sala wenze na tshombo !!! 
-                
-                </Text>
-            </View>
-        )
-    }
+                <View style={styles.imageBox}>
+                    <Image 
+                        style={styles.imageFile}
+                        source={{
+                            uri: 'https://cdn.searchenginejournal.com/wp-content/uploads/2020/04/how-ecommerce-companies-can-care-for-their-customers-5eb56dfe6c64e-1520x800.png'
+                        }}
+                    />
+                </View>
+                <View style={styles.description}>
+                    <Text style= {styles.textDetails}>WenzeShop, avec vous, partout. <Text style={{color: 'rgba(245, 62, 82, 0.6)'}}>Commandez via votre smartphone</Text> et faites-vous livrer à votre domicile.</Text>
+                </View>
+                <View style={styles.description}>
+                    <Text style= {styles.textDetails}>WenzeShop, avec vous, partout. <Text style={{color: 'rgba(245, 62, 82, 0.6)'}}>Commandez via votre smartphone</Text> et faites-vous livrer à votre domicile.</Text>
+                </View>
+                <View style={styles.description}>
+                    <Text style= {styles.textDetails}>WenzeShop, avec vous, partout. <Text style={{color: 'rgba(245, 62, 82, 0.6)'}}>Commandez via votre smartphone</Text> et faites-vous livrer à votre domicile.</Text>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    )
 }
 
 
@@ -31,31 +46,55 @@ export default Policy
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: "rgba(245, 62, 82, 0.6)",
+        backgroundColor: "#fff",
         width: width,
         height: height,
-        paddingTop: 40,
+        paddingBottom: 60,
+    },
+    header: {
+        height: 120,
+        width: width,
+        borderBottomLeftRadius: 50,
+        borderBottomRightRadius: 50,
+        backgroundColor: 'rgba(245, 62, 82, 0.6)',
+        paddingHorizontal: 40,
+        paddingTop: 50,
+    },
+    textHeader: {
+        color: '#fff',
+        fontSize: 22,
+        fontWeight: '800',
+        textAlign: 'center',
     },
     imageBox: {
-        flex: 1,
-        width: 50,
-        height: 50,
+        width: width - 30,
+        height: 200,
+        display: 'flex',
+        marginTop: 5,
     },
     imageFile: {
         flex: 1,
         width: null,
         height: null,
-        resizeMode: "cover",
+        resizeMode: 'cover',
     },
-    textPromo: {
-        flex: 1,
-        marginTop: 50,
-        textAlign: "center",
-        color: "white",
-        fontSize: 16,
-        fontWeight: '700',
+    description: {
+        paddingHorizontal: 40,
+        paddingVertical: 10,
+        marginTop: 10,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
+    textDetails: {
+        textAlign: 'left',
+        fontSize: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 })
