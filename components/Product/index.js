@@ -228,7 +228,8 @@ const styles = StyleSheet.create({
     },
     textTop: {
         fontSize: 24,
-        color: "rgba(0, 0, 0, 0.9)"
+        fontWeight: '700',
+        marginTop: 10,
     },
     boxSliders: {
         marginTop: 20,

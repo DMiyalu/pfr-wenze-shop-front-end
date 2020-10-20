@@ -1,7 +1,10 @@
 import { SET_PANIER, GET_PANIER } from './panier.types'
 
 const INITIAL_STATE = {
-    panier: []
+    panier: {
+        listFruits: ['orange', 'mango', 'banana'],
+        total: 0
+    }
 }
 
 
@@ -10,8 +13,8 @@ export default (state = INITIAL_STATE, action) => {
         case SET_PANIER:
             return {...state, panier: action.payload}
         case GET_PANIER:
-            return {...state, loading: false}
+            return state
         default:
-            return {...state, loading: false}
+            return state
     }
 }

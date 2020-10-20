@@ -6,27 +6,33 @@ import { getPanier, renderPanier } from '../../Redux/Panier/panier.actions'
 
 const ShoppingCart = () => {
     const dispatch = useDispatch()
-    const { panier, loading } = useSelector((state) => state.panier)
-    const newPanier = [
-        {title: 'orange', number: 3},
-        {title: 'mango', number: 5},
-        {title: 'fraise', number: 9}
-    ]
+    const { panier } = useSelector((state) => state.panier)
+    const newPanier = {
+        listFruits: ['orange', 'mango'],
+        total: 13000
+    }
 
-    useEffect(() => {
-        dispatch(getPanier(newPanier));
+    useEffect(async() => {
+        await dispatch(getPanier({
+            listFruits: ['tomato', 'fraise', 'orange', 'cacao', 'chocolate'],
+            total: 14500
+        }));
+
+        console.log('State: ', panier);
     }, []);
 
     return (
             <View>
                 <Text> This is shoppingcart component where print some articles. </Text>
                 <View>
-                    <Text> Redux: {panier.total} </Text>
+                    
                     <View>
                         <Text>List of fruits: </Text>
-                        {panier.map(number => <View>
-                            Fruit: {number.title} * Quantité: {number.number}
+                        <Text> {panier.total} </Text>
+                        {panier.listFruits.map((fruit) => <View style={{ marginVertical: 5, paddingVertical: 10, paddingHorizontal: 10, borderWidth: 1, borderColor: "#dedede" }}>
+                            <Text style={{ fontSize: 20, color: "rgba(0, 0, 0, 0.7)" }}> - {fruit} </Text>
                         </View>)}
+                        
                     </View>
                 </View>
             </View>

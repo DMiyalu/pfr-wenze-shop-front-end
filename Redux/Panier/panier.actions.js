@@ -6,8 +6,8 @@ export const getPanier = (data) => {
         type: SET_PANIER,
         payload: data
     }
-    return async (dispatch) => {
-        dispatch(action)
+    return async(dispatch) => {
+        await dispatch(action)
     }
 }
 
