@@ -6,8 +6,7 @@ import Search from '../../components/Search'
 const Stack = createStackNavigator();
 
 
-
-export class Home extends Component {
+export class ShoppingCartEntry extends Component {
     render() {
         return (
                 <NavigationContainer independent={true}>
@@ -20,4 +19,4 @@ export class Home extends Component {
     }
 }
 
-export default Home
+export default ShoppingCartEntry

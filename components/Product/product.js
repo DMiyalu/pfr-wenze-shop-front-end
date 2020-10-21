@@ -16,12 +16,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Header from '../Header'
 import CardProduct from '../CardProduct'
 const { height, width } = Dimensions.get('window')
-
 const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-
-
-    
+ 
 
     const Product = ({ route, navigation }) => {
         const [number, setNumber] = useState(0);
