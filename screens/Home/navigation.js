@@ -83,7 +83,7 @@ const { height, width } = Dimensions.get('window')
                                             >
                                                 <CardProduct
                                                     imageUri={require('../../assets/product/viande_pack.jpg')}
-                                                    imageDescription={product.description}
+                                                    imageDescription={product.description.slice(0, 16)}
                                                     imagePrice={product.price}
                                                 />
                                             </TouchableOpacity>
@@ -100,7 +100,13 @@ const { height, width } = Dimensions.get('window')
                                 <View style={styles.sectionImageBox} >
                                     <TouchableOpacity style={{ flex: 1, height: 100, width: width - 40 }} onPress={() => navigation.navigate("Product")}>
                                     <Image
-                                        onPress={() => navigation.navigate('Product')}
+                                        onPress={() => navigation.navigate('Product', {
+                                            productID: 34,
+                                            title: 'Orange',
+                                            description: 'Viande de boeuf et de vache, provenant de Goma',
+                                            price: 5,
+                                            number: 1
+                                        })}
                                         style={styles.sectionImage} 
                                         source={require('../../assets/product/slide1.jpg')} 
                                     />
@@ -158,7 +164,7 @@ const { height, width } = Dimensions.get('window')
                                             >
                                                 <CardProduct
                                                     imageUri={require('../../assets/product/viande_pack.jpg')}
-                                                    imageDescription={product.description}
+                                                    imageDescription={product.description.slice(0, 16)}
                                                     imagePrice={product.price}
                                                 />
                                             </TouchableOpacity>

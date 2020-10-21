@@ -22,7 +22,7 @@ import { Text, View, Image, StyleSheet } from 'react-native'
                     </View>
                     <View>
                         <Text style={styles.imagePrice} >
-                            {props.imagePrice}
+                            {props.imagePrice} $ par unité.
                         </Text>
                     </View>  
                 </View>

@@ -28,7 +28,7 @@ const ShoppingCart = ({ navigation }) => {
                             </View>
                             <View style={styles.details}>
                                 <View>
-                                    <Text style={styles.titleProduct}>{fruit.title.toUpperCase()}</Text>
+                                    <Text style={styles.titleProduct}>{fruit.title.toUpperCase().slice(0, 16)}</Text>
                                 </View>
                                 <View style={{display: 'flex', flexDirection: 'column'}}>
                                     <View>

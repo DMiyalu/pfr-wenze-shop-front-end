@@ -2,9 +2,11 @@ import { SET_PRODUCT, GET_PRODUCT } from './product.types'
 
 const INITIAL_STATE = {
     product: {
+        productID: 1,
         title: "Initial title",
         description: 'Initial words to describe this product.',
-        price: 45
+        price: 45,
+        number: 1
     }
 }
 

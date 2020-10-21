@@ -112,7 +112,9 @@ const Header = ({ screen, navigation }) => {
                         placeholder={text}
                         placeholderTextColor="gray"
                         underlineColorAndroid="transparent"
-                        clearTextOnFocus={true}
+                        clearTextOnFocus={false}
+                        autoFocus={true}
+                        onChange={(e) => setText(e.target.value)}
                     />
                 </View>
                 

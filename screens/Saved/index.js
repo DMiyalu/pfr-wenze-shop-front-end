@@ -3,9 +3,6 @@ import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import axios from 'axios'
 
 
-
-
-
 export class Saved extends Component {
     constructor(props) {
         super()
