@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, Picker, ScrollView, Button } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Header from '../Header'
@@ -7,20 +8,22 @@ const { height, width } = Dimensions.get('window')
 
 const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export class Product extends Component {
-    constructor(porps) {
-        super()
-        this.state = {
-            count: 0,
-            listValueCount: listValueCount,
-            idItem: 0,
-        }
-    }
+
 
     
 
-    render() {
-        const { navigation } = this.props
+    const Product = ({ route, navigation }) => {
+        const [number, setNumber] = useState(0);
+        const dispatch = useDispatch()
+        const { product } = useSelector((state) => state.product)
+        const { productID, title, description, price } = route.params
+       
+        
+        console.log("Params: ", route.params)
+        console.log('Redux state: ', product);
+        console.log('Product state')
+
+
         return (
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
             <View style={styles.container}>
@@ -34,9 +37,9 @@ export class Product extends Component {
                             <Image style={styles.imageFile} source={require('../../assets/product/viande-poulet.jpg')} />
                         </View>
                         <View style={styles.description}>
-                            <Text style={styles.titleProduct}>VIANDE HACHEE </Text>
-                            <Text style={styles.textDescription}>viande de boeuf et de vache, provenant de Goma </Text>
-                            <Text style={styles.price}>5$ par kilos </Text>
+                            <Text style={styles.titleProduct}>{product.title.toUpperCase()}</Text>
+                            <Text style={styles.textDescription}>{product.description}</Text>
+                            <Text style={styles.price}>{product.price}$ par kilos </Text>
                         </View>
                     </View>
                     <View style={styles.details}>
@@ -55,12 +58,17 @@ export class Product extends Component {
                             </View>
                             <View>
                             <Picker
-                                selectedValue={this.state.count}
+                                
+                                selectedValue={number}
                                 style={{ height: 50, width: 150 }}
-                                onValueChange={(itemValue) => this.setState({ count: itemValue })}
+                                onValueChange={(itemValue) => setNumber(itemValue)}
                             >                              
-                                {this.state.listValueCount.map((value) => 
-                                    <Picker.Item label={value} value={value} />
+                                {listValueCount.map((value) => 
+                                    <Picker.Item 
+                                        key={value}
+                                        label={value}  
+                                        value={value}
+                                    />
                                 )}              
                             </Picker>
                             </View>
@@ -71,7 +79,6 @@ export class Product extends Component {
                                     name="checkbox-blank-circle" color="rgba(0, 0, 200, 0.6)" size={10}
                                 />
                             </View>
-                            
                             <View>
                                 <Text 
                                     style={{ marginHorizontal: 5, fontSize: 14 }}
@@ -123,7 +130,7 @@ export class Product extends Component {
             </ScrollView>
         )
     }
-}
+
 
 export default Product
 
