@@ -19,7 +19,9 @@ const { height, width } = Dimensions.get('window')
    
     const HomeEntry = ({ navigation }) => {
         const [apiData, setApiData] = useState([])
+        const [isLoading, setIsLoading] = useState(false)
         const dispatch = useDispatch()
+
 
         function showProduct(product) {
             dispatch(getProduct({
@@ -50,13 +52,15 @@ const { height, width } = Dimensions.get('window')
             .catch((error) => {
                 console.log(error);
             })
+
+            setIsLoading(true)
         }, [])
-  
+ 
 
         return (
             <SafeAreaView style={{flex: 1, backgroundColor: "white"}} >
                 <View style={styles.container} >
-                    <Header />
+                    <Header navigation={navigation} screen='Search'/>
                     <ScrollView
                         scrollEventThrottle={20}
                     >
@@ -145,7 +149,8 @@ const { height, width } = Dimensions.get('window')
                                         horizontal={true}
                                         showsHorizontalScrollIndicator={false}
                                     >
-                                        {apiData.map((product) => 
+                                        {isLoading}
+                                              {apiData.map((product) => 
                                             <TouchableOpacity
                                                 key={product._id}
                                                 style={{ flex: 1 }}
