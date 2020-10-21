@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { 
     View, 
     TextInput, 
     StyleSheet,
     Text,
+    Image,
     TouchableOpacity,
     ScrollView,
     Dimensions
@@ -14,11 +16,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const { width, height } = Dimensions.get('window')
 
 const Header = ({ screen, navigation }) => {
+    const dispatch = useDispatch()
+    const { allProduct } = useSelector((state) => state.allProduct)
     const [text, setText] = useState('Sandwich')
     const [isChanged, setIsChanged] = useState(0)
-    const [numberData, setNumberData] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    ])
     
 
     const renderInitialScreen = () => {
@@ -33,17 +34,18 @@ const Header = ({ screen, navigation }) => {
     const renderOnLoadingData = () => {
         console.log('renderOnLoadingData running...')
         // before to load data
-        setIsChanged(1)
+        // setIsChanged(1)
         // after to load data
-        // setIsChanged(2)
+        setIsChanged(2)
     }
 
     const renderDataLoader = () => {
         console.log('renderDataLoader running...')
+        console.log('AllProduct: ', allProduct)
         return (
-            <ScrollView showsVerticalScrollIndicator={true}>
-                {numberData.map((viewLoader) => 
-                    <View key={viewLoader} style={styles.imageLoaderBox}>
+            <View>
+                {allProduct.map((viewLoader) => 
+                    <View style={styles.imageLoaderBox} key={viewLoader.productID}>
                         <View style={styles.imageLoaderContainer}>
                             
                         </View>
@@ -54,27 +56,29 @@ const Header = ({ screen, navigation }) => {
                         </View>
                     </View>
                 )}
-            </ScrollView>
+            </View>
         )
     }
 
     const renderData = () => {
         console.log('renderData running...')
         return (
-            <ScrollView showsVerticalScrollIndicator={false}>
-                {numberData.map((viewLoader) => 
-                    <View style={styles.imageBox}>
+            <View>
+                <Text style={{ fontSize: 20, fontWeight: '700', marginVertical: 5}}>Resultats de recherche pour le ‘mot clé recherché’</Text>
+                {allProduct.map((data) => 
+                    <View style={styles.imageBox} key={data.productID}>
                         <View style={styles.imageContainer}>
                             <Image style={styles.imageFile} source={require('../../assets/product/viande-poulet.jpg')} />
                         </View>
                         <View style={styles.description}>
-                            <Text style={styles.titleProduct}>{viewLoader.title.toUpperCase()}</Text>
-                            <Text style={styles.textDescription}>{viewLoader.description}</Text>
-                            <Text style={styles.price}>{viewLoader.price}$ par kilos </Text>
+                            <Text style={styles.titleProduct}>{data.title.toUpperCase()}</Text>
+                            <Text style={styles.textDescription}>{data.description}</Text>
+                            <Text style={styles.price}>{data.price}$ par kilos </Text>
                         </View>
                     </View>
                 )}
-            </ScrollView>
+            </View>
+            
         )
     }
 
@@ -90,7 +94,7 @@ const Header = ({ screen, navigation }) => {
     }
 
     return (
-            <View style={styles.search} >
+            <View style={styles.container} >
                 <View style={styles.mobile} >
 
                 </View>
@@ -112,9 +116,11 @@ const Header = ({ screen, navigation }) => {
                     />
                 </View>
                 
+                <ScrollView showsVerticalScrollIndicator={false} >
                     <View style={styles.resultBox}>
                         {showLoaderScreen()}
                     </View>
+                </ScrollView>
                
             </View>
     )
@@ -124,8 +130,14 @@ const Header = ({ screen, navigation }) => {
 export default Header
 
 const styles = StyleSheet.create({
-    search: {
-        paddingBottom: 20,
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        paddingBottom: 10,
+        backgroundColor: 'white',
+        height: height,
+        width: width,
     },
     mobile: {
         backgroundColor: "rgba(245, 62, 82, 0.6)",
@@ -158,9 +170,17 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 20,
+        paddingHorizontal: 20,
         paddingVertical: 10,
-        marginTop: 20
+        marginTop: 10
+    },
+    imageContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: 100,
+        height: 100,
+        paddingHorizontal: 5,
+        paddingVertical: 5,
     },
     imageBox: {
         display: "flex",
@@ -168,14 +188,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         paddingHorizontal: 10,
         paddingVertical: 10,
+        marginVertical: 15,
         borderRadius: 5,
         borderColor: "rgba(0, 0, 0, 0.10)",
         borderWidth: 1,
-    },
-    imageContainer: {
-        flex: 1,
-        paddingHorizontal: 5,
-        paddingVertical: 5,
     },
     imageFile: {
         flex: 1,
