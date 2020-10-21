@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Text, View, StyleSheet, SafeAreaView, Dimensions, Image, Picker, ScrollView, TouchableOpacity } from 'react-native'
-import { getPanier, renderPanier } from '../../Redux/Panier/panier.actions'
 import Header from '../../components/Header'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -16,10 +15,7 @@ const ShoppingCart = () => {
     const [number, setNumber] = useState(0)
     const dispatch = useDispatch()
     const { panier } = useSelector((state) => state.panier)
-    const newPanier = {
-        listFruits: ['orange', 'mango'],
-        total: 13000
-    }
+
 
     function getProduct() {
         return (
@@ -69,21 +65,6 @@ const ShoppingCart = () => {
         )
     }
 
-    useEffect(async() => {
-        await dispatch(getPanier({
-            listFruits: [
-                {title: 'orange', price: 13, number: 4},
-                {title: 'mango', price: 9, number: 3},
-                {title: 'fraise', price: 22, number: 2},
-                {title: 'chocolate', price: 5, number: 7},
-                {title: 'fromage', price: 12, number: 3},
-                {title: 'juice', price: 10, number: 2}
-            ],
-            total: 14500
-        }));
-
-        console.log('State: ', panier);
-    }, []);
 
     return (
             <SafeAreaView style={styles.container}>
@@ -97,9 +78,9 @@ const ShoppingCart = () => {
                             {getProduct()}
                         </View>
                         <View style={styles.resume}>
-                            <Text>Total: </Text>
-                            <Text>TVA: </Text>
-                            <Text>Net à payer: </Text>
+                            <Text>Total: {panier.total} $</Text>
+                            <Text>TVA: 0.00 $</Text>
+                            <Text>Net à payer:  {panier.total} $</Text>
                         </View>
                         <TouchableOpacity 
                             style={{width: width - 40, display: 'flex', justifyContent: 'center', alignItems: 'center'}}
@@ -186,7 +167,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderWidth: 1,
         borderColor: 'rgba(245, 62, 82, 0.6)',
-        background: 'null',
         borderRadius: 5,
         width: 160,
         height: 55,

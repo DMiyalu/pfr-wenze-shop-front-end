@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Text, View, StyleSheet, Image, Dimensions, SafeAreaView, Picker, ScrollView, Button } from 'react-native'
+import { getPanier } from '../../Redux/Panier/panier.actions'
+import { 
+    Text, 
+    View, 
+    StyleSheet, 
+    Image, 
+    Dimensions, 
+    SafeAreaView, 
+    Picker, 
+    ScrollView, 
+    TouchableOpacity
+} from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Header from '../Header'
 import CardProduct from '../CardProduct'
@@ -16,17 +27,31 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         const [number, setNumber] = useState(0);
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
+        const { panier } = useSelector((state) => state.panier)
         const { productID, title, description, price } = route.params
-       
         
         console.log("Params: ", route.params)
-        console.log('Redux state: ', product);
-        console.log('Product state')
+        console.log('Redux - Product: ', product)
+        console.log('Redux - Panier: ', panier)
+
+        function addToShoppingCart() {
+            // get a state from redux
+            // update this state
+            // dispatch in redux
+            console.log('addToShopping running...');
+            const newTotal = panier.total + (product.price * product.number)
+            const newProduct = product
+            const updatePanier = panier;
+            updatePanier.listFruits.push(newProduct)
+            updatePanier.total = newTotal
+            dispatch(getPanier(updatePanier))
+            console.log(updatePanier)
+        }
 
 
         return (
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <Header />
                 <View style={styles.main} > 
                     <Text style={styles.topTitle}>
@@ -95,8 +120,13 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                             </View>
                         </View>
                     </View>
-                    <View style={styles.boutonAjouter}>
-                        <Text style={{ color: "white", fontSize: 16 }}> Ajouter </Text>
+                    <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <TouchableOpacity
+                            onPress={() => addToShoppingCart()}
+                            style={styles.boutonAjouter}
+                        >
+                            <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.sectionSliders}>
                             <Text style={styles.textTop} >
@@ -126,7 +156,7 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                             </View>
                     </View>
                 </View>
-            </View>
+            </SafeAreaView>
             </ScrollView>
         )
     }
@@ -208,12 +238,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     boutonAjouter: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 150,
+        height: 45,
         borderRadius: 5,
         backgroundColor: "rgba(245, 62, 82, 0.6)",
         textAlign: "center",
         paddingVertical: 5,
         marginHorizontal: 30,
-        marginTop: 20,
+        marginTop: 20,  
     },
     sectionSliders: {
         marginTop: 20,

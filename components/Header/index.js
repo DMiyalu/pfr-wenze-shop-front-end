@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { 
     View, 
     TextInput, 
@@ -7,9 +7,8 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
-export class Header extends Component {
-    render() {
-        return (
+const Header = () => {
+    return (
             <View style={styles.search} >
                 <View style={styles.mobile} >
 
@@ -25,9 +24,9 @@ export class Header extends Component {
                     />
                 </View>
             </View>
-        )
-    }
+    )
 }
+
 
 export default Header
 

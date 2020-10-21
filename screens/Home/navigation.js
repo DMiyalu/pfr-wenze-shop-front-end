@@ -21,17 +21,20 @@ const { height, width } = Dimensions.get('window')
         const [apiData, setApiData] = useState([])
         const dispatch = useDispatch()
 
-        function showProduct() {
-                dispatch(getProduct({
-                title: "One product",
-                description: "Some word to describe this product",
-                price: 23
+        function showProduct(product) {
+            dispatch(getProduct({
+                productID: product._id,
+                title: product.title,
+                description: product.description,
+                price: product.price,
+                number: 1,
             }))
             navigation.navigate('Product', {
                 productID: 34,
                 title: 'Orange',
                 description: 'Viande de boeuf et de vache, provenant de Goma',
-                price: 5
+                price: 5,
+                number: 1
             })
         }
 
@@ -68,53 +71,19 @@ const { height, width } = Dimensions.get('window')
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => showProduct()}
-                                    >
-                                    <CardProduct
-                                        onPress={() => showProduct()}
-                                        imageUri={require('../../assets/product/viande_pack.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    </TouchableOpacity>
-                                    
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => showProduct()}
-                                    >
-                                    <CardProduct
-                                        onPress={() => showProduct()}
-                                        imageUri={require('../../assets/product/viande_pack.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => showProduct()}
-                                    >
-                                    <CardProduct
-                                        
-                                        imageUri={require('../../assets/product/viande_pack.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => showProduct()}
-                                    >
-                                    <CardProduct
-                                        
-                                        imageUri={require('../../assets/product/viande_pack.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    </TouchableOpacity>
+                                    {apiData.map((product) => 
+                                            <TouchableOpacity
+                                                key={product._id}
+                                                style={{ flex: 1 }}
+                                                onPress={() => showProduct(product)}
+                                            >
+                                                <CardProduct
+                                                    imageUri={require('../../assets/product/viande_pack.jpg')}
+                                                    imageDescription={product.description}
+                                                    imagePrice={product.price}
+                                                />
+                                            </TouchableOpacity>
+                                        )}
                                 </ScrollView>
                             </View>
                             <View style={styles.section}>
@@ -180,13 +149,9 @@ const { height, width } = Dimensions.get('window')
                                             <TouchableOpacity
                                                 key={product._id}
                                                 style={{ flex: 1 }}
-                                                onPress={() => navigation.navigate('Product', {
-                                                    productId: product._id,
-                                                    otherParams: 'Passing params ...'
-                                                })}
+                                                onPress={() => showProduct(product)}
                                             >
                                                 <CardProduct
-                                                
                                                     imageUri={require('../../assets/product/viande_pack.jpg')}
                                                     imageDescription={product.description}
                                                     imagePrice={product.price}
@@ -209,7 +174,7 @@ export default HomeEntry
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 60,
+        paddingBottom: 20,
     },
     textTop: {
         fontSize: 24,
