@@ -76,7 +76,7 @@ const Home = ({ navigation }) => {
                                     <TouchableOpacity
                                         key={product._id}
                                         style={styles.touchableOpacityStyle}
-                                        onPress={() => showProduct(product)}
+                                        onPress={() => {showProduct(product)}}
                                     >
                                         <CardProduct
                                             imageUri={require('../../../assets/product/viande-poulet.jpg')}
@@ -95,15 +95,14 @@ const Home = ({ navigation }) => {
                                 Vivres frais & Viandes fraiches
                             </Text>
                             <View style={styles.sectionImageBox} >
-                                <TouchableOpacity style={styles.bigElementUI} onPress={() => navigation.navigate("Product")}>
+                                <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct({
+                                    productID: 34,
+                                    title: 'Orange',
+                                    description: 'Viande de boeuf et de vache, provenant de Goma',
+                                    price: 5,
+                                    number: 1
+                                })}}>
                                     <Image
-                                        onPress={() => navigation.navigate('Product', {
-                                            productID: 34,
-                                            title: 'Orange',
-                                            description: 'Viande de boeuf et de vache, provenant de Goma',
-                                            price: 5,
-                                            number: 1
-                                        })}
                                         style={styles.sectionImage} 
                                         source={require('../../../assets/product/slide1.jpg')} 
                                     />
