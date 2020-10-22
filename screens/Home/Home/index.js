@@ -1,6 +1,7 @@
 import React, {  useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProduct } from '../../../Redux/Product/product.actions'
+import { getProductList } from '../../../Redux/AllProduct/allProduct.actions'
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
 import Header from '../../../components/Header'
@@ -43,7 +44,7 @@ const Home = ({ navigation }) => {
         axios
         .get('http://127.0.0.1:8080/product')
         .then(async(response) => {
-            await setApiData(response.data)
+            await dispatch(getProductList(response.data))
         })
         .catch((error) => {
             console.log("Erreur à l'appel de l'api: ", error);
@@ -72,9 +73,9 @@ const Home = ({ navigation }) => {
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                {apiData.map((product) => 
+                                {allProduct.map((product) => 
                                     <TouchableOpacity
-                                        key={product._id}
+                                        key={product.productID}
                                         style={styles.touchableOpacityStyle}
                                         onPress={() => {showProduct(product)}}
                                     >
@@ -121,9 +122,9 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {apiData.map((product) => 
+                                    {allProduct.map((product) => 
                                         <TouchableOpacity
-                                            key={product._id}
+                                            key={product.productID}
                                             style={{ flex: 1 }}
                                             onPress={() => showProduct(product)}
                                         >
@@ -149,9 +150,9 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {apiData.map((product) => 
+                                    {allProduct.map((product) => 
                                         <TouchableOpacity
-                                            key={product._id}
+                                            key={product.productID}
                                             style={{ flex: 1 }}
                                             onPress={() => showProduct(product)}
                                         >
