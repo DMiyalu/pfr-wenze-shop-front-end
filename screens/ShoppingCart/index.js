@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import ShoppingCart from './shoppingCart'
+import ShoppingCart from './ShoppingCart'
 import Search from '../../components/Search'
 const Stack = createStackNavigator();
 
