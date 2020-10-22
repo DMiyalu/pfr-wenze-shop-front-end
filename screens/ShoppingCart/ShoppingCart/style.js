@@ -9,9 +9,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         marginHorizontal: 0,
         marginVertical: 0,
-        paddingBottom: 60,
+        paddingBottom: 90,
         width: width,
         height: height,    
+    },
+    main: {
+        paddingHorizontal: 10,
     },
     uiSectionBox: { 
         display: 'flex', 
@@ -21,7 +24,7 @@ const styles = StyleSheet.create({
     },
     pickerStyle: { 
         height: 50,
-        width: 150 
+        width: 100,
     },
     uiTextPrice: {
         color:'rgba(122, 119, 255, 1)', 
@@ -29,16 +32,14 @@ const styles = StyleSheet.create({
         marginRight: 0
     },
     uiQte: {
-        flex: 1, 
+        flex: 1,
         justifyContent: 'center', 
-        alignItems: 'center' 
+        alignItems: 'center' ,
     },
-    uiQteIcon: {
-        flex: 1, 
-        backgroundColor: 'rgba(245, 62, 82, 0.6)', 
-        padding: 10, 
-        borderRadius: 50, 
-        marginHorizontal: 10,
+    uiQteIcon: { 
+        backgroundColor: 'rgba(245, 62, 82, 0.6)',
+        padding: 5,
+        borderRadius: 50,
     },
     uiButton: {
         width: width - 40, 
@@ -64,23 +65,23 @@ const styles = StyleSheet.create({
     productSection: {
         display: 'flex',
         flexDirection: 'column',
-        paddingHorizontal: 10,
     },
     article: {
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'center',
         height: 130,
+        width: 250,
         borderWidth: 1,
         borderColor: '#dedede',
-        paddingHorizontal: 5,
         paddingVertical: 5,
         marginVertical: 5,
     },
     imageBox: {
         flex: 1,
-        width: 70,
-        height: 50,
+        width: 100,
+        height: 80,
     },
     imageFile: {
         flex: 1,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     details: {
-        display: 'flex',
+        flex: 1,
         flexDirection: 'column'
     },
     titleProduct: {

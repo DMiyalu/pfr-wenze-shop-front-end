@@ -67,7 +67,7 @@ const ShoppingCart = ({ navigation }) => {
             <SafeAreaView style={styles.container}>
                 <Header navigation={navigation} screen='Search'/>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View style={{paddingHorizontal: 20}}>
+                    <View style={styles.main}>
                         <View style={styles.titleTop}>
                             <Text style={styles.titleTopText}>Livraison à domicile en tout point dans la ville de Kinshasa.</Text>
                         </View>
