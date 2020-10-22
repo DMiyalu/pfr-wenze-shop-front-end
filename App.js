@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { StyleSheet, AppRegistry } from 'react-native';
 import Home from './screens/Home'
-import Saved from './screens/Saved'
+import Liked from './screens/Liked'
 import ShoppingCart from './screens/ShoppingCart'
 import User from './screens/User'
 import About from './screens/About'
@@ -36,10 +36,10 @@ function MyTabs() {
       />
       
       <Tab.Screen 
-        name="Saved" 
-        component={Saved}
+        name="Liked" 
+        component={Liked}
         options={{
-          tabBarLabel: 'Saved',
+          tabBarLabel: 'Liked',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
           ),
