@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import styles from './style'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { 
     View, 
-    TextInput, 
-    StyleSheet
+    TextInput,
 } from 'react-native'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 const Header = ({ screen, navigation }) => {
@@ -39,31 +39,3 @@ const Header = ({ screen, navigation }) => {
 
 
 export default Header
-
-const styles = StyleSheet.create({
-    search: {
-        paddingBottom: 20,
-    },
-    box: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: "white",
-        marginTop: 20,
-        marginHorizontal: 20,
-        height: 35,
-        borderRadius: 3,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.20,
-        shadowRadius: 1.41,
-
-        elevation: 2,
-    },
-    textInput: {
-        backgroundColor: "white",
-        fontWeight: '700',
-    },
-})
