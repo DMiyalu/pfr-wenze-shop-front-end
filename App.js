@@ -1,21 +1,21 @@
-import 'react-native-gesture-handler';
-import * as React from 'react';
-import { StyleSheet, AppRegistry } from 'react-native';
+import 'react-native-gesture-handler'
+import * as React from 'react'
+import { StyleSheet, AppRegistry } from 'react-native'
 import Home from './screens/Home'
 import Liked from './screens/Liked'
 import ShoppingCart from './screens/ShoppingCart'
 import User from './screens/User'
 import About from './screens/About'
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NavigationContainer } from '@react-navigation/native'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import store from './Redux/store'
 import { Provider } from 'react-redux'
 
 
 const color="#F53E52"
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator()
 function MyTabs() {
   return (
     <Tab.Navigator

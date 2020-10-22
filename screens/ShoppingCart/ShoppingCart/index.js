@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import styles from './style'
 
 
-const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 const ShoppingCart = ({ navigation }) => {
     const [number, setNumber] = useState(0)
@@ -18,7 +18,7 @@ const ShoppingCart = ({ navigation }) => {
         return (
             <View>
                 {panier.listFruits.map((fruit) => 
-                    <View style={styles.uiSectionBox}>
+                    <View style={styles.uiSectionBox} key={fruit.productID}>
                         <View style={styles.article}>
                             <View style={styles.imageBox}>
                                 <Image style={styles.imageFile} source={require('../../../assets/product/viande-poulet.jpg')} />
@@ -32,10 +32,10 @@ const ShoppingCart = ({ navigation }) => {
                                         <Picker
                                             selectedValue={fruit.number}
                                             style={styles.pickerStyle}
-                                            onValueChange={(numberEntry) => setNumber(numberEntry)}
+                                            onValueChange={(numberEntry) => setNumber(parseInt(numberEntry))}
                                         >                              
                                             {listValueCount.map((value) => 
-                                                <Picker.Item label={value} value={value} />
+                                                <Picker.Item label={value} value={value} key={value} />
                                             )}          
                                         </Picker>
                                     </View>

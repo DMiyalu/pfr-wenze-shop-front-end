@@ -15,16 +15,17 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Header from '../Header'
 import CardProduct from '../CardProduct'
+
+
 const { height, width } = Dimensions.get('window')
-const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
  
 
     const Product = ({ route, navigation }) => {
-        const [number, setNumber] = useState(0);
+        const [number, setNumber] = useState(1);
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
-        const { productID, title, description, price } = route.params
         
         console.log("Params: ", route.params)
         console.log('Redux - Product: ', product)
@@ -46,9 +47,9 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
         return (
-            <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
             <SafeAreaView style={styles.container}>
-                <Header />
+            <Header />
+            <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
                 <View style={styles.main} > 
                     <Text style={styles.topTitle}>
                         Livraison à domicile en tout point dans la ville de Kinshasa.
@@ -79,10 +80,10 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                             </View>
                             <View>
                             <Picker
-                                
+                                mode={'dialog'}
                                 selectedValue={number}
                                 style={{ height: 50, width: 150 }}
-                                onValueChange={(itemValue) => setNumber(itemValue)}
+                                onValueChange={(itemValue, itemIndex) => setNumber(parseInt(itemValue))}
                             >                              
                                 {listValueCount.map((value) => 
                                     <Picker.Item 
@@ -152,8 +153,8 @@ const listValueCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                             </View>
                     </View>
                 </View>
-            </SafeAreaView>
             </ScrollView>
+            </SafeAreaView>
         )
     }
 

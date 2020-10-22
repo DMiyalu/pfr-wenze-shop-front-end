@@ -1,5 +1,5 @@
 import React, {  useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getProduct } from '../../../Redux/Product/product.actions'
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
@@ -11,12 +11,14 @@ import {
     SafeAreaView,
     ScrollView,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    StatusBar
 } from 'react-native'
 
 
 const Home = ({ navigation }) => {
     const [apiData, setApiData] = useState([])
+    const { allProduct } = useSelector((state) => state.allProduct)
     const [isLoading, setIsLoading] = useState(false)
     const dispatch = useDispatch()
 
@@ -42,12 +44,9 @@ const Home = ({ navigation }) => {
         .get('http://127.0.0.1:8080/product')
         .then(async(response) => {
             await setApiData(response.data)
-            console.log("Response: ", response.data)
-            console.log("State: ", apiData);
-            console.log(navigation);
         })
         .catch((error) => {
-            console.log(error);
+            console.log("Erreur à l'appel de l'api: ", error);
         })
 
         setIsLoading(true)
@@ -56,6 +55,7 @@ const Home = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.safeAreaViewStyle} >
+        <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
             <View style={styles.container} >
                 <Header navigation={navigation} screen='Search'/>
                 <ScrollView

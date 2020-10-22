@@ -17,9 +17,6 @@ const Header = ({ screen, navigation }) => {
 
     return (
             <View style={styles.search} >
-                <View style={styles.mobile} >
-
-                </View>
                 <View style={styles.box} >
                     <MaterialCommunityIcons 
                         name="magnify" 
@@ -46,10 +43,6 @@ export default Header
 const styles = StyleSheet.create({
     search: {
         paddingBottom: 20,
-    },
-    mobile: {
-        backgroundColor: "rgba(245, 62, 82, 0.6)",
-        height: 35,
     },
     box: {
         flexDirection: "row",
