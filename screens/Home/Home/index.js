@@ -42,7 +42,7 @@ const Home = ({ navigation }) => {
 
     useEffect(() => {
         axios
-        .get('http://127.0.0.1:8080/product')
+        .get('http://192.168.43.52:8080/product')
         .then(async(response) => {
             await dispatch(getProductList(response.data))
         })
