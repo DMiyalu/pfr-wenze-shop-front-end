@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Header from '../../Header'
 import CardProduct from '../../CardProduct'
 import styles from './style'
+import Dialog, { DialogContent, SlideAnimation } from 'react-native-popup-dialog'
 import { 
     Text, 
     View,  
@@ -12,31 +13,73 @@ import {
     SafeAreaView, 
     Picker, 
     ScrollView, 
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from 'react-native'
+import { set } from 'react-native-reanimated'
 
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
  
-
     const Product = ({ route, navigation }) => {
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
         const [count, setCount] = useState(1)
+        const [visible, setVisible] = useState(false)
         let newProduct = {...product}
+
+        useEffect(() => {
+            setVisible(false)
+            return () => {
+                setVisible(false)
+            }
+        }, [])
 
         const setCountProduct = (data) => {
             newProduct.number = data
             setCount(data)
         }
 
+        const hideDialog = () => setVisible(false)
 
+        const createAlertButton = () => {
+            Alert.alert(
+                'Ajout article',
+                'Cet article est déjà dans le panier !',
+                [
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Action annulée !'),
+                        style: 'cancel'
+                    }
+                ],
+                {cancelable: false}
+            )
+        }
 
+        const testProductExistAlready = () => {
+
+            for (let element of panier.listFruits) {
+                if (newProduct.productID === element.productID) return true
+                else continue
+            }
+            return false
+        }
+
+        const callValidation = async () => {
+            await  
+            (testProductExistAlready()) ? createAlertButton() : addToShoppingCart()
+        }
+ 
         const addToShoppingCart = async () => {
+            
+            newProduct.number = count
             let newState = { ...panier }
             await newState.listFruits.push(newProduct)
+            console.log('newState: ', newState)
             dispatch(getPanier(newState))
+            setVisible(true)
         }
 
         return (
@@ -112,12 +155,28 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                     </View>
                     <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity
-                            onPress={() => addToShoppingCart()}
+                            onPress={() => callValidation()}
                             style={styles.boutonAjouter}
                         >
                             <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
                         </TouchableOpacity>
                     </View>
+                    <Dialog
+                        visible={visible}
+                        onTouchOutside={() => setVisible(false)}
+                        dialogAnimation={new SlideAnimation({
+                            initialValue: 0,
+                            slideFrom: 'bottom',
+                            useNativeDriver: true,
+                        })}
+                        animationDuration={200}
+                    >
+                        <DialogContent>
+                            <View>
+                                <Text>Ajouté</Text>
+                            </View>
+                        </DialogContent>
+                    </Dialog>
                     <View style={styles.sectionSliders}>
                             <Text style={styles.textTop} >
                                 Produits commandés en accompagnement                          

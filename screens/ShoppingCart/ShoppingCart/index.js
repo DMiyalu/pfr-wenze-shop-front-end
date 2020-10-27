@@ -22,52 +22,67 @@ const ShoppingCart = ({ navigation }) => {
     const dispatch = useDispatch()
     const { panier } = useSelector((state) => state.panier)
 
+    const showEmptyScreen = () => {
+        return (
+            <View style={styles.emptyBox}>
+                <Text style={styles.emptyText}>Votre panier est vide.</Text>
+            </View>
+        )
+    }
+
+    const showShoppingCart = () => {
+        return (
+            <View>
+            {panier.listFruits.map((fruit) => 
+                <View style={styles.uiSectionBox} key={fruit.productID}>
+                    <View style={styles.article}>
+                        <View style={styles.imageBox}>
+                            <Image style={styles.imageFile} source={require('../../../assets/product/viande-poulet.jpg')} />
+                        </View>
+                        <View style={styles.details}>
+                            <View>
+                                <Text style={styles.titleProduct}>{fruit.title.toUpperCase().slice(0, 16)}</Text>
+                            </View>
+                            <View style={{display: 'flex', flexDirection: 'column'}}>
+                                <View>
+                                    <Picker
+                                        selectedValue={fruit.number}
+                                        style={styles.pickerStyle}
+                                        onValueChange={(numberEntry) => setNumber(parseInt(numberEntry))}
+                                    >                              
+                                        {listValueCount.map((value) => 
+                                            <Picker.Item label={value} value={value} key={value} />
+                                        )}          
+                                    </Picker>
+                                </View>
+                                <Text 
+                                    style={styles.uiTextPrice}
+                                >
+                                    {fruit.price} $
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                    <TouchableOpacity style={styles.uiQte}>
+                        <View style={styles.uiQteIcon}>
+                            <MaterialCommunityIcons 
+                                name="close"
+                                color="rgba(250, 250, 250, 1.0)" 
+                                size={18}
+                            />
+                        </View>             
+                    </TouchableOpacity>
+                </View>)}
+            </View>
+        )
+    }
+
 
     function getProduct() {
         return (
             <View>
-                {panier.listFruits.map((fruit) => 
-                    <View style={styles.uiSectionBox} key={fruit.productID}>
-                        <View style={styles.article}>
-                            <View style={styles.imageBox}>
-                                <Image style={styles.imageFile} source={require('../../../assets/product/viande-poulet.jpg')} />
-                            </View>
-                            <View style={styles.details}>
-                                <View>
-                                    <Text style={styles.titleProduct}>{fruit.title.toUpperCase().slice(0, 16)}</Text>
-                                </View>
-                                <View style={{display: 'flex', flexDirection: 'column'}}>
-                                    <View>
-                                        <Picker
-                                            selectedValue={fruit.number}
-                                            style={styles.pickerStyle}
-                                            onValueChange={(numberEntry) => setNumber(parseInt(numberEntry))}
-                                        >                              
-                                            {listValueCount.map((value) => 
-                                                <Picker.Item label={value} value={value} key={value} />
-                                            )}          
-                                        </Picker>
-                                    </View>
-                                    <Text 
-                                        style={styles.uiTextPrice}
-                                    >
-                                        {fruit.price} $
-                                    </Text>
-                                </View>
-                            </View>
-                        </View>
-                        <TouchableOpacity style={styles.uiQte}>
-                            <View style={styles.uiQteIcon}>
-                                <MaterialCommunityIcons 
-                                    name="close"
-                                    color="rgba(250, 250, 250, 1.0)" 
-                                    size={18}
-                                />
-                            </View>             
-                        </TouchableOpacity>
-                    </View>)}
+                {( panier.listFruits.length === 0) ? showEmptyScreen() : showShoppingCart() }
             </View>
-
         )
     }
 

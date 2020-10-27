@@ -116,6 +116,24 @@ const styles = StyleSheet.create({
         width: 160,
         height: 55,
     },
+    emptyBox: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+        width: width - 20,
+        marginVertical: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        borderColor: 'rgba(100, 100, 100, 0.2)'
+    },
+    emptyText: {
+        textAlign: 'center',
+        fontSize: 18,
+        color: 'rgba(0, 0, 0, 0.8)',
+        fontWeight: '500',
+    }
 })
 
 export default styles

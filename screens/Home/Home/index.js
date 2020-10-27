@@ -25,11 +25,11 @@ const Home = ({ navigation }) => {
 
     function showProduct(product) {
         dispatch(getProduct({
-            productID: product._id,
+            productID: product.productID,
             title: product.title,
             description: product.description,
             price: product.price,
-            number: 1,
+            number: product.number,
         }))
         navigation.navigate('Product')
     }
