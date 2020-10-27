@@ -32,7 +32,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         useEffect(() => {
             setVisible(false)
             return () => {
-                setVisible(false)
+                hideDialog()
             }
         }, [])
 
@@ -172,8 +172,8 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                         animationDuration={200}
                     >
                         <DialogContent>
-                            <View>
-                                <Text>Ajouté</Text>
+                            <View style={styles.dialogBox}>
+                                <Text style={styles.dialogText}>Ajouté</Text>
                             </View>
                         </DialogContent>
                     </Dialog>

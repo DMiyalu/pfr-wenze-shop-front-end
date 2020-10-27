@@ -98,6 +98,16 @@ const styles = StyleSheet.create({
     },
     boxSliders: {
         marginTop: 20,
+    },
+    dialogBox: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+    },
+    dialogText: {
+        textAlign: 'center',
+        color: 'rgba(0, 0, 200, 0.6)',
     }
 })
 
