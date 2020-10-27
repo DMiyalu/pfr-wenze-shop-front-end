@@ -31,13 +31,7 @@ const Home = ({ navigation }) => {
             price: product.price,
             number: 1,
         }))
-        navigation.navigate('Product', {
-            productID: 34,
-            title: 'Orange',
-            description: 'Viande de boeuf et de vache, provenant de Goma',
-            price: 5,
-            number: 1
-        })
+        navigation.navigate('Product')
     }
 
     useEffect(() => {

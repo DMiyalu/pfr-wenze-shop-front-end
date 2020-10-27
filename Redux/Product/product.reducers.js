@@ -1,4 +1,4 @@
-import { SET_PRODUCT, GET_PRODUCT } from './product.types'
+import { SET_PRODUCT, SET_NUMBER } from './product.types'
 
 const INITIAL_STATE = {
     product: {
@@ -10,13 +10,19 @@ const INITIAL_STATE = {
     }
 }
 
+const setNumber = (Value) => {
+    const newState = {...state}
+    newState.number = Value
+    return newState
+}
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case SET_PRODUCT:
             return {...state, product: action.payload}
-        case GET_PRODUCT:
-            return state
+        case SET_NUMBER:
+            const newState = setNumber(action.payload)
+            return newState
         default:
             return state
     }

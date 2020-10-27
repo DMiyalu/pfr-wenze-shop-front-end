@@ -1,4 +1,4 @@
-import { SET_PRODUCT, GET_PRODUCT } from './product.types'
+import { SET_PRODUCT, SET_NUMBER } from './product.types'
 
 
 export const getProduct = (data) => {
@@ -11,9 +11,14 @@ export const getProduct = (data) => {
     }
 }
 
-export const renderProduct = () => {
+
+
+export const getNumber = (data) => {
     const action = {
-        type: GET_PRODUCT
+        type: SET_NUMBER,
+        payload: data
+    }
+    return async(dispatch) => {
+        await dispatch(action)
     }
 }
-

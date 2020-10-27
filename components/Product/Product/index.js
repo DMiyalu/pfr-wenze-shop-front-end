@@ -20,27 +20,23 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
  
 
     const Product = ({ route, navigation }) => {
-        const [number, setNumber] = useState(1);
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
-        
-        console.log("Params: ", route.params)
-        console.log('Redux - Product: ', product)
-        console.log('Redux - Panier: ', panier)
+        const [count, setCount] = useState(1)
+        let newProduct = {...product}
 
-        function addToShoppingCart() {
-            // get a state from redux
-            // update this state
-            // dispatch in redux
-            console.log('addToShopping running...');
-            const newTotal = panier.total + (product.price * product.number)
-            const newProduct = product
-            const updatePanier = panier;
-            updatePanier.listFruits.push(newProduct)
-            updatePanier.total = newTotal
-            dispatch(getPanier(updatePanier))
-            console.log(updatePanier)
+        const setCountProduct = (data) => {
+            newProduct.number = data
+            setCount(data)
+        }
+
+
+
+        const addToShoppingCart = async () => {
+            let newState = { ...panier }
+            await newState.listFruits.push(newProduct)
+            dispatch(getPanier(newState))
         }
 
         return (
@@ -78,10 +74,10 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                             <View>
                             <Picker
                                 mode={'dialog'}
-                                selectedValue={number}
+                                selectedValue={count}
                                 style={{ height: 50, width: 150 }}
-                                onValueChange={(itemValue, itemIndex) => setNumber(parseInt(itemValue))}
-                            >                              
+                                onValueChange={(itemValue, itemIndex) => setCountProduct(itemValue)}
+                            >           
                                 {listValueCount.map((value) => 
                                     <Picker.Item 
                                         key={value}
