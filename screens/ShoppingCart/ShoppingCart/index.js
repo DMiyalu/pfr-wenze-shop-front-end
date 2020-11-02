@@ -100,9 +100,9 @@ const ShoppingCart = ({ navigation }) => {
                             {getProduct()}
                         </View>
                         <View style={styles.resume}>
-                            <Text>Total: {panier.total} $</Text>
+                            <Text>Total: {panier.netToPay} $</Text>
                             <Text>TVA: 0.00 $</Text>
-                            <Text>Net à payer:  {panier.total} $</Text>
+                            <Text>Net à payer:  {panier.netToPay} $</Text>
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}

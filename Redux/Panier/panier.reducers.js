@@ -3,7 +3,8 @@ import { SET_PANIER, GET_PANIER } from './panier.types'
 const INITIAL_STATE = {
     panier: {
         listFruits: [],
-        total: 0
+        total: 0,
+        netToPay: 0
     }
 }
 
