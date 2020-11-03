@@ -161,22 +161,6 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                             <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
                         </TouchableOpacity>
                     </View>
-                    <Dialog
-                        visible={visible}
-                        onTouchOutside={() => setVisible(false)}
-                        dialogAnimation={new SlideAnimation({
-                            initialValue: 0,
-                            slideFrom: 'bottom',
-                            useNativeDriver: true,
-                        })}
-                        animationDuration={200}
-                    >
-                        <DialogContent>
-                            <View style={styles.dialogBox}>
-                                <Text style={styles.dialogText}>Ajouté</Text>
-                            </View>
-                        </DialogContent>
-                    </Dialog>
                     <View style={styles.sectionSliders}>
                             <Text style={styles.textTop} >
                                 Produits commandés en accompagnement                          
