@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingBottom: 20,
+        paddingBottom: 10,
     },
     touchableOpacityStyle: {
         flex: 1,

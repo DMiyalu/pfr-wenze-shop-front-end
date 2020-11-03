@@ -96,6 +96,10 @@ const ShoppingCart = ({ navigation }) => {
         )
     }
 
+    const payOrder = () => {
+        navigation.navigate('Pay')
+    }
+
 
     return (
             <SafeAreaView style={styles.container}>
@@ -116,6 +120,7 @@ const ShoppingCart = ({ navigation }) => {
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
+                            onPress={() => payOrder()}
                         >
                             <View style={styles.boutonBox}>
                                 <Text style={styles.uiButtonText}>Commandez</Text>
