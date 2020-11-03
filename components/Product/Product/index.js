@@ -26,22 +26,14 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
         const [count, setCount] = useState(1)
-        const [visible, setVisible] = useState(false)
         let newProduct = {...product}
 
-        useEffect(() => {
-            setVisible(false)
-            return () => {
-                hideDialog()
-            }
-        }, [])
 
         const setCountProduct = (data) => {
             newProduct.number = data
             setCount(data)
         }
 
-        const hideDialog = () => setVisible(false)
 
         const createAlertButton = () => {
             Alert.alert(
@@ -73,13 +65,17 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         }
  
         const addToShoppingCart = async () => {
-            
+            // set count product
             newProduct.number = count
+
             let newState = { ...panier }
             await newState.listFruits.push(newProduct)
+
+            // set new total and netToPay
+            newState.total += (newProduct.price * newProduct.number)
+            
             console.log('newState: ', newState)
             dispatch(getPanier(newState))
-            setVisible(true)
         }
 
         return (
@@ -148,7 +144,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                 <Text 
                                     style={{ marginHorizontal: 5, fontSize: 14, color: "rgba(245, 62, 82, 0.6)" }}
                                 > 
-                                    100$
+                                    {count * product.price} $
                                 </Text>
                             </View>
                         </View>

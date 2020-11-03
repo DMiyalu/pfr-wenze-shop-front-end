@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { getPanier } from '../../../Redux/Panier/panier.actions'
 import { 
     Text, 
     View, 
@@ -8,7 +9,7 @@ import {
     Picker, 
     ScrollView, 
     TouchableOpacity,
-    StatusBar 
+    StatusBar   
 } from 'react-native'
 import Header from '../../../components/Header'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -28,6 +29,15 @@ const ShoppingCart = ({ navigation }) => {
                 <Text style={styles.emptyText}>Votre panier est vide.</Text>
             </View>
         )
+    }
+
+    const deleteProduct = async (id) => {
+        let newState = { ...panier  }
+        newState = newState.listFruits.filter((product) => {
+            return product.productID !== id 
+        })
+        console.log("Product deleted")
+        getPanier(newState)
     }
 
     const showShoppingCart = () => {
@@ -63,7 +73,7 @@ const ShoppingCart = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                    <TouchableOpacity style={styles.uiQte}>
+                    <TouchableOpacity onPress={() => deleteProduct(fruit.productID)} style={styles.uiQte}>
                         <View style={styles.uiQteIcon}>
                             <MaterialCommunityIcons 
                                 name="close"
@@ -100,9 +110,9 @@ const ShoppingCart = ({ navigation }) => {
                             {getProduct()}
                         </View>
                         <View style={styles.resume}>
-                            <Text>Total: {panier.netToPay} $</Text>
+                            <Text>Total: {panier.total} $</Text>
                             <Text>TVA: 0.00 $</Text>
-                            <Text>Net à payer:  {panier.netToPay} $</Text>
+                            <Text>Net à payer:  {panier.total} $</Text>
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
