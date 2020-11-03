@@ -12,10 +12,10 @@ import {
 const About = () => {
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.textHeader}>WenzeShop, avec vous, partout.</Text>
+            </View>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
-                    <Text style={styles.textHeader}>WenzeShop, avec vous, partout.</Text>
-                </View>
                 <View style={styles.imageBox}>
                     <Image 
                         style={styles.imageFile}
@@ -40,5 +40,3 @@ const About = () => {
 
 
 export default About
-
-

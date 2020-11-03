@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
         paddingBottom: 60,
     },
     header: {
-        height: 120,
+        height: 85,
         width: width,
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,
         backgroundColor: 'rgba(245, 62, 82, 0.6)',
         paddingHorizontal: 40,
-        paddingTop: 50,
+        paddingTop: 10,
     },
     textHeader: {
         color: '#fff',
