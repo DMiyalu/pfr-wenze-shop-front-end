@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'center',
         marginTop: 30,
-        borderWidth: 1,
         padding: 0
     },
     items: {
