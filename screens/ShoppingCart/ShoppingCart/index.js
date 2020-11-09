@@ -97,7 +97,7 @@ const ShoppingCart = ({ navigation }) => {
     }
 
     const payOrder = () => {
-        navigation.navigate('Pay')
+        navigation.navigate('Payment')
     }
 
 
