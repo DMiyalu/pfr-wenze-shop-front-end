@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styles from './style'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
     SafeAreaView,
     View,
@@ -30,19 +31,20 @@ const Payment = ({ navigation }) => {
                             <Image style={styles.imageFile} source={require('../../../assets/services/airtel.png')} />
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.items}>
+                    <TouchableOpacity onPress={() => callPaymentService()} style={styles.items}>
                         <View style={styles.imageBox}>
                             <Image style={styles.imageFile} source={require('../../../assets/services/africell.png')} />
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.items}>
-                        <View style={styles.imageBox}>
-                            <Image style={styles.imageFile} source={require('../../../assets/services/mpesa.png')} />
+                    <TouchableOpacity onPress={() => callPaymentService()} style={styles.items}>
+                        <View style={styles.otherMode}>
+                            <Text style={styles.textModePayment}>Paiement à la livraison</Text>
+                            <MaterialCommunityIcons name="truck-delivery" color='rgba(245, 62, 82, 0.6)' size={26} />
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.items}>
+                    <TouchableOpacity onPress={() => callPaymentService()} style={styles.items}>
                         <View style={styles.imageBox}>
-                            <Image style={styles.imageFile} source={require('../../../assets/services/airtel.png')} />
+                            <Image style={styles.imageFile} source={require('../../../assets/services/mpesa.png')} />
                         </View>
                     </TouchableOpacity>
                 </View>

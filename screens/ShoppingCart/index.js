@@ -15,8 +15,8 @@ export class ShoppingCartEntry extends Component {
                     <Stack.Navigator initialRouteName="ShoppingCart">
                         <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ headerShown: false }} />
                         <Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
-                        <Stack.Screen name="Payment" component={Payment} options={{ headerShown: false }} />
-                        <Stack.Screen name="Service" component={Service} options={{ headerShown: false }} />
+                        <Stack.Screen name="Payment" component={Payment} options={{ headerShown: true }} />
+                        <Stack.Screen name="Service" component={Service} options={{ headerShown: true }} />
                     </Stack.Navigator>
                 </NavigationContainer>
         )

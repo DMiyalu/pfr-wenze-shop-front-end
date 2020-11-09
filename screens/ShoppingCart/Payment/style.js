@@ -23,19 +23,19 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'center',
         marginTop: 30,
+        borderWidth: 1,
+        padding: 0
     },
     items: {
         display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
         width: (width / 2) - 60,
         height: 100,
-        marginVertical: 10,
+        marginVertical: 5,
         marginHorizontal: 10,
     },
     imageBox: {
         flex: 1,
-        width: 110,
+        width: 113,
         height: 50,
     },
     imageFile: {
@@ -43,6 +43,19 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'stretch',
+    },
+    textModePayment: {
+        textAlign: 'center',
+        color: 'rgba(0, 0, 0, 0.8)'
+    },
+    otherMode: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        width: (width / 2) - 60,
+        backgroundColor: 'white',
     }
 })
 
