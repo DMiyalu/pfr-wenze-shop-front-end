@@ -88,7 +88,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                     </Text>
                     <View style={styles.imageBox} >
                         <View style={styles.imageContainer}>
-                            <Image style={styles.imageFile} source={require('../../../assets/product/viande-poulet.jpg')} />
+                            <Image style={styles.imageFile} source={product.image} />
                         </View>
                         <View style={styles.description}>
                             <Text style={styles.titleProduct}>{product.title.toUpperCase()}</Text>

@@ -30,6 +30,7 @@ const Home = ({ navigation }) => {
             description: product.description,
             price: product.price,
             number: product.number,
+            image: product.image,
         }))
         navigation.navigate('Product')
     }
@@ -71,7 +72,7 @@ const Home = ({ navigation }) => {
                                     <TouchableOpacity
                                         key={product.productID}
                                         style={styles.touchableOpacityStyle}
-                                        onPress={() => {showProduct(product)}}
+                                        onPress={() => {showProduct(product )}}
                                     >
                                         <CardProduct
                                             imageUri={product.image}
