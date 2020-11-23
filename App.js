@@ -19,16 +19,16 @@ const Tab = createMaterialBottomTabNavigator()
 function MyTabs() {
   return (
     <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Accueil"
         activeColor="#F53E52"
         inactiveColor="gray"
         barStyle={{ backgroundColor: 'white', paddingBottom: 3 }}
     >
       <Tab.Screen 
-        name="Home" 
+        name="Accueil" 
         component={Home}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Accueil',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -39,7 +39,7 @@ function MyTabs() {
         name="Liked" 
         component={Liked}
         options={{
-          tabBarLabel: 'Liked',
+          tabBarLabel: 'Favoris',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
           ),
@@ -50,7 +50,7 @@ function MyTabs() {
         name="ShoppingCart" 
         component={ShoppingCart}
         options={{
-          tabBarLabel: 'Shopping',
+          tabBarLabel: 'Pannier',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="cart" color={color} size={26} />
           ),
@@ -61,7 +61,7 @@ function MyTabs() {
         name="User" 
         component={User}
         options={{
-          tabBarLabel: 'User',
+          tabBarLabel: 'Compte',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account-circle-outline" color={color} size={26} />
           ),
@@ -72,7 +72,7 @@ function MyTabs() {
         name="About" 
         component={About}
         options={{
-          tabBarLabel: 'About',
+          tabBarLabel: 'A propos',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="help-rhombus-outline" color={color} size={26} />
           ),

@@ -84,10 +84,10 @@ const Home = ({ navigation }) => {
                         </View>
                         <View style={styles.section}>
                             <Text style={styles.sectionTitre} >
-                                    Fast food with wiikko
+                                    Fast food à votre gout !
                             </Text>
                             <Text style={styles.sectionCategories} >
-                                Vivres frais & Viandes fraiches
+                                Sandwich et Cake
                             </Text>
                             <View style={styles.sectionImageBox} >
                                 <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct({
@@ -106,10 +106,10 @@ const Home = ({ navigation }) => {
                         </View>
                         <View style={styles.section} >
                             <Text style={styles.sectionTitre} >
-                                All for your lunch
+                                Des boissons et des Jus 
                             </Text>
                             <Text style={styles.sectionCategories} >
-                                Cake & Sandwich
+                                Jus à base des fruits naturels
                             </Text>
                             <View style={styles.boxSliders} >
                                 <ScrollView 
@@ -134,10 +134,10 @@ const Home = ({ navigation }) => {
                         </View>
                         <View style={styles.section} >
                             <Text style={styles.sectionTitre} >
-                                Take delicious foods at your home
+                                Farine et Céréales
                             </Text>
                             <Text style={styles.sectionCategories} >
-                                Cake & Sandwich
+                                Céréales recoltés en bonne saison
                             </Text>
                             <View style={styles.boxSliders} >
                                 <ScrollView 

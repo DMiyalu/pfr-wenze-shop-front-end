@@ -21,6 +21,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 const ShoppingCart = ({ navigation }) => {
     const [number, setNumber] = useState(0)
     const dispatch = useDispatch()
+    const [shoppingCartEmpty, setShoppingCartEmpty] = useState(false)
     const { panier } = useSelector((state) => state.panier)
 
     const showEmptyScreen = () => {
