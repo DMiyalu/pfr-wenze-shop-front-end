@@ -14,7 +14,7 @@ import {
 
 const Header = ({ screen, navigation }) => {
     const dispatch = useDispatch()
-    const { allProduct } = useSelector((state) => state.allProduct)
+    const { products } = useSelector((state) => state.products)
     const [text, setText] = useState('Sandwich')
     const [isChanged, setIsChanged] = useState(0)
     
@@ -38,10 +38,10 @@ const Header = ({ screen, navigation }) => {
 
     const renderDataLoader = () => {
         console.log('renderDataLoader running...')
-        console.log('AllProduct: ', allProduct)
+        console.log('AllProduct: ', products)
         return (
             <View>
-                {allProduct.map((viewLoader) => 
+                {products['legumes'].map((viewLoader) => 
                     <View style={styles.imageLoaderBox} key={viewLoader.productID}>
                         <View style={styles.imageLoaderContainer}>
                             
@@ -62,10 +62,10 @@ const Header = ({ screen, navigation }) => {
         return (
             <View>
                 <Text style={{ fontSize: 20, fontWeight: '700', marginVertical: 5}}>Resultats de recherche pour le ‘mot clé recherché’</Text>
-                {allProduct.map((data) => 
+                {products['legumes'].map((data) => 
                     <View style={styles.imageBox} key={data.productID}>
                         <View style={styles.imageContainer}>
-                            <Image style={styles.imageFile} source={require('../../assets/product/viande-poulet.jpg')} />
+                            <Image style={styles.imageFile} source={data.image} />
                         </View>
                         <View style={styles.description}>
                             <Text style={styles.titleProduct}>{data.title.toUpperCase()}</Text>

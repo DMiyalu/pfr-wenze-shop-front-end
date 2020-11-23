@@ -91,18 +91,19 @@ const Home = ({ navigation }) => {
                                 Sandwich et Cake
                             </Text>
                             <View style={styles.sectionImageBox} >
-                                <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct({
-                                    productID: 34,
-                                    title: 'Orange',
-                                    description: 'Viande de boeuf et de vache, provenant de Goma',
-                                    price: 5,
-                                    number: 1
-                                })}}>
-                                    <Image
-                                        style={styles.sectionImage} 
-                                        source={require('../../../assets/product/sandwich.jpg')} 
-                                    />
-                                </TouchableOpacity>
+                                <ScrollView
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    {products['cake'].map((product) => 
+                                        <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct(product)}}>
+                                            <Image
+                                                style={styles.sectionImage} 
+                                                source={product.image}
+                                            />
+                                        </TouchableOpacity>
+                                    )}
+                                </ScrollView>
                             </View>
                         </View>
                         <View style={styles.section} >

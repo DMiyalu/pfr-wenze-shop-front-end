@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
     },
     bigElementUI: {
         flex: 1, 
-        height: 100, 
-        width: width - 40
+        height: 200,
+        width: width - 40,
+        marginHorizontal: 5,
     },
     mainSliders: {
         flex: 1,
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
         width: width - 40,
         height: 200,
         marginTop: 20,
+        paddingHorizontal: 10,
         
     },
     sectionImage: {
