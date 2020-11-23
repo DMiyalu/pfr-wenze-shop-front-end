@@ -19,7 +19,7 @@ import {
 
 const Home = ({ navigation }) => {
     const [apiData, setApiData] = useState([])
-    const { allProduct } = useSelector((state) => state.allProduct)
+    const { products } = useSelector((state) => state.products)
     const [isLoading, setIsLoading] = useState(false)
     const dispatch = useDispatch()
 
@@ -67,14 +67,14 @@ const Home = ({ navigation }) => {
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                {allProduct.map((product) => 
+                                {products['legumes'].map((product) => 
                                     <TouchableOpacity
                                         key={product.productID}
                                         style={styles.touchableOpacityStyle}
                                         onPress={() => {showProduct(product)}}
                                     >
                                         <CardProduct
-                                            imageUri={require('../../../assets/product/viande-poulet.jpg')}
+                                            imageUri={product.image}
                                             imageDescription={product.description.slice(0, 16)}
                                             imagePrice={product.price}
                                         />
@@ -99,7 +99,7 @@ const Home = ({ navigation }) => {
                                 })}}>
                                     <Image
                                         style={styles.sectionImage} 
-                                        source={require('../../../assets/product/slide1.jpg')} 
+                                        source={require('../../../assets/product/sandwich.jpg')} 
                                     />
                                 </TouchableOpacity>
                             </View>
@@ -116,14 +116,14 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {allProduct.map((product) => 
+                                    {products['boissons'].map((product) => 
                                         <TouchableOpacity
                                             key={product.productID}
                                             style={{ flex: 1 }}
                                             onPress={() => showProduct(product)}
                                         >
                                             <CardProduct
-                                                imageUri={require('../../../assets/product/viande-poulet.jpg')}
+                                                imageUri={product.image}
                                                 imageDescription={product.description.slice(0, 16)}
                                                 imagePrice={product.price}
                                             />
@@ -144,14 +144,14 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {allProduct.map((product) => 
+                                    {products['farine'].map((product) => 
                                         <TouchableOpacity
                                             key={product.productID}
                                             style={{ flex: 1 }}
                                             onPress={() => showProduct(product)}
                                         >
                                             <CardProduct
-                                                imageUri={require('../../../assets/product/viande_pack.jpg')}
+                                                imageUri={product.image}
                                                 imageDescription={product.description.slice(0, 16)}
                                                 imagePrice={product.price}
                                             />
