@@ -11,6 +11,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import store from './Redux/store'
 import { Provider } from 'react-redux'
+import BadgeIcon from './components/BadgeIcon'
 
 
 const color="#F53E52"
@@ -52,7 +53,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Pannier',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cart" color={color} size={26} />
+            <BadgeIcon color={color} />
           ),
         }}
       />
