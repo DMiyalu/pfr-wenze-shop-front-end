@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: "cover",
+        borderRadius: 5,
     },
     imageDescription: {
         fontWeight: '700',
@@ -80,8 +81,10 @@ const styles = StyleSheet.create({
     },
     sectionImageBox: {
         width: width - 40,
-        height: 200,
+        height: 230,
         marginTop: 20,
+        marginHorizontal: 20,
+        borderRadius: 5,
         
     },
     sectionImage: {

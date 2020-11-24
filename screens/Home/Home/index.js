@@ -55,6 +55,26 @@ const Home = ({ navigation }) => {
         )
     }
 
+    //Affiche les produits dans la section des promotions produits
+    const showPromotionnalProducts = (categorie) => {
+        return (
+            <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+            >
+                {(products.filter((product) => product.categorie === categorie)).map((product) => 
+                    <TouchableOpacity
+                        key={product._id}
+                        style={styles.sectionImageBox}
+                        onPress={() => {showOneProduct(product)}}
+                    >
+                        <Image style={styles.imageFile} source={product.image} />
+                    </TouchableOpacity>
+                )}
+            </ScrollView>
+        )
+    }
+
 
     //Affiche les produits filtrés par leur catégorie
     const showAllProducts = (categorie) => {
@@ -65,7 +85,7 @@ const Home = ({ navigation }) => {
             >
                 {(products.filter((product) => product.categorie === categorie)).map((product) => 
                     <TouchableOpacity
-                        key={product.productID}
+                        key={product._id}
                         style={styles.touchableOpacityStyle}
                         onPress={() => {showOneProduct(product)}}
                     >
@@ -128,13 +148,13 @@ const Home = ({ navigation }) => {
                         </View>
                         <View style={styles.section}>
                             <Text style={styles.sectionTitre} >
-                                    Fast food à votre gout !
+                                    La patisserie à votre main !
                             </Text>
                             <Text style={styles.sectionCategories} >
-                                Sandwich et Cake
+                                Sandwich et autres Gateaux
                             </Text>
-                            <View style={styles.sectionImageBox} >
-                                { (products.length === 0) ? showBigEmptyCard() : showAllProducts("Cake")}
+                            <View>
+                                { (products.length === 0) ? showBigEmptyCard() : showPromotionnalProducts("Cake")}
                             </View>
                         </View>
                         <View style={styles.section} >
