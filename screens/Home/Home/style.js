@@ -66,22 +66,22 @@ const styles = StyleSheet.create({
     },
     section: {
         marginTop: 40,
-        paddingHorizontal: 20,
     },
     sectionCategories: {
         fontSize: 16,
         fontWeight: '100',
+        paddingHorizontal: 20,
     },
     sectionTitre: {
         fontSize: 24,
         fontWeight: '700',
         marginTop: 10,
+        paddingHorizontal: 20,
     },
     sectionImageBox: {
         width: width - 40,
         height: 200,
         marginTop: 20,
-        paddingHorizontal: 10,
         
     },
     sectionImage: {
@@ -93,6 +93,25 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#dddddd",
     },
+    smallEmptyCard: {
+        flex: 1,
+        width: 130,
+        height: 130,
+        backgroundColor: "#dedede",
+        marginHorizontal: 10,
+        marginVertical: 10,
+        borderRadius: 5,
+        padding: 5,
+    },
+    bigEmptyCard: {
+        flex: 1,
+        width: 230,
+        height: 200,
+        backgroundColor: "#dedede",
+        marginHorizontal: 10,
+        marginVertical: 10,
+        borderRadius: 5,
+    }
 })
 
 export default styles

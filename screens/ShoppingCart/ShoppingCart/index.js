@@ -89,7 +89,7 @@ const ShoppingCart = ({ navigation }) => {
     }
 
 
-    function getProduct() {
+    const getProduct = () => {
         return (
             <View>
                 {( panier.listFruits.length === 0) ? showEmptyScreen() : showShoppingCart() }

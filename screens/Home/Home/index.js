@@ -23,7 +23,66 @@ const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const dispatch = useDispatch()
 
-    function showProduct(product) {
+    //Affiche un rendu de chargement des données(loader 1)
+    const showSmallEmptyCard = () => {
+        return (
+            <ScrollView 
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                style={styles.touchableOpacityStyle}
+            >
+                <View style={styles.smallEmptyCard}></View>
+                <View style={styles.smallEmptyCard}></View>
+                <View style={styles.smallEmptyCard}></View>
+                <View style={styles.smallEmptyCard}></View>
+            </ScrollView>
+        )
+    }
+
+    //(Loader 2)
+    const showBigEmptyCard = () => {
+        return (
+            <ScrollView 
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                style={styles.touchableOpacityStyle}
+            >
+                <View style={styles.bigEmptyCard}></View>
+                <View style={styles.bigEmptyCard}></View>
+                <View style={styles.bigEmptyCard}></View>
+                <View style={styles.bigEmptyCard}></View>
+            </ScrollView>
+        )
+    }
+
+
+    //Affiche les produits filtrés par leur catégorie
+    const showAllProducts = (categorie) => {
+        return (
+            <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+            >
+                {(products.filter((product) => product.categorie === categorie)).map((product) => 
+                    <TouchableOpacity
+                        key={product.productID}
+                        style={styles.touchableOpacityStyle}
+                        onPress={() => {showOneProduct(product)}}
+                    >
+                        <CardProduct
+                            imageUri={product.image}
+                            imageDescription={product.title.slice(0, 16)}
+                            imagePrice={product.price}
+                            unite={product.unite}
+                        />
+                    </TouchableOpacity>
+                )}
+            </ScrollView>
+        )
+    }
+    
+    // Affiche les détails sur un produit
+    const showOneProduct = (product) => {
         dispatch(getProduct({
             productID: product.productID,
             title: product.title,
@@ -35,6 +94,7 @@ const Home = ({ navigation }) => {
         navigation.navigate('Product')
     }
 
+    //Recupère les données via l'API et les envoies vers le store
     useEffect(() => {
         axios
         .get('http://192.168.43.52:8080/product')
@@ -60,30 +120,11 @@ const Home = ({ navigation }) => {
                     scrollEventThrottle={20}
                 >
                     <View style={styles.mainSliders} >
-                        <Text style={styles.textTop} 
-                            onPress={() => navigation.navigate('Product')}
-                        >
+                        <Text style={styles.textTop} >
                             Des légumes et des Viandes 100% Bio...
                         </Text>
                         <View style={styles.boxSliders} >
-                            <ScrollView 
-                                horizontal={true}
-                                showsHorizontalScrollIndicator={false}
-                            >
-                                {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
-                                    <TouchableOpacity
-                                        key={product.productID}
-                                        style={styles.touchableOpacityStyle}
-                                        onPress={() => {showProduct(product)}}
-                                    >
-                                        <CardProduct
-                                            imageUri={product.image}
-                                            imageDescription={product.title.slice(0, 16)}
-                                            imagePrice={product.price}
-                                        />
-                                    </TouchableOpacity>
-                                )}
-                            </ScrollView>
+                            { (products.length === 0) ? showSmallEmptyCard() : showAllProducts("Légumes")}
                         </View>
                         <View style={styles.section}>
                             <Text style={styles.sectionTitre} >
@@ -93,19 +134,7 @@ const Home = ({ navigation }) => {
                                 Sandwich et Cake
                             </Text>
                             <View style={styles.sectionImageBox} >
-                                <ScrollView
-                                    horizontal={true}
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) =>                      
-                                        <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct(product)}}>
-                                            <Image
-                                                style={styles.sectionImage} 
-                                                source={product.image}
-                                            />
-                                        </TouchableOpacity>
-                                    )}
-                                </ScrollView>
+                                { (products.length === 0) ? showBigEmptyCard() : showAllProducts("Cake")}
                             </View>
                         </View>
                         <View style={styles.section} >
@@ -116,24 +145,7 @@ const Home = ({ navigation }) => {
                                 Jus à base des fruits naturels
                             </Text>
                             <View style={styles.boxSliders} >
-                                <ScrollView 
-                                    horizontal={true}
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
-                                        <TouchableOpacity
-                                            key={product.productID}
-                                            style={styles.touchableOpacityStyle}
-                                            onPress={() => {showProduct(product)}}
-                                        >
-                                            <CardProduct
-                                                imageUri={product.image}
-                                                imageDescription={product.title.slice(0, 16)}
-                                                imagePrice={product.price}
-                                            />
-                                        </TouchableOpacity>
-                                    )}
-                                </ScrollView>
+                                {(products.length === 0) ? showSmallEmptyCard() : showAllProducts("Boissons")}
                             </View>
                         </View>
                         <View style={styles.section} >
@@ -144,24 +156,7 @@ const Home = ({ navigation }) => {
                                 Céréales recoltés en bonne saison
                             </Text>
                             <View style={styles.boxSliders} >
-                                <ScrollView 
-                                    horizontal={true}
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
-                                        <TouchableOpacity
-                                            key={product.productID}
-                                            style={styles.touchableOpacityStyle}
-                                            onPress={() => {showProduct(product)}}
-                                        >
-                                            <CardProduct
-                                                imageUri={product.image}
-                                                imageDescription={product.title.slice(0, 16)}
-                                                imagePrice={product.price}
-                                            />
-                                        </TouchableOpacity>
-                                    )}
-                                </ScrollView>
+                                {(products.length === 0) ? showSmallEmptyCard() : showAllProducts("Farine")}
                             </View>
                         </View>
                     </View> 

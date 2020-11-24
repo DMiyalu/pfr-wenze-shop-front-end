@@ -27,7 +27,7 @@ import {
                     </View>
                     <View>
                         <Text style={styles.imagePrice} >
-                            {props.imagePrice} $ par unité.
+                            {props.imagePrice} / {props.unite}. 
                         </Text>
                     </View>  
                 </View>
