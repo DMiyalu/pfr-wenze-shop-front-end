@@ -78,7 +78,7 @@ const Home = ({ navigation }) => {
                                     >
                                         <CardProduct
                                             imageUri={product.image}
-                                            imageDescription={product.description.slice(0, 16)}
+                                            imageDescription={product.title.slice(0, 16)}
                                             imagePrice={product.price}
                                         />
                                     </TouchableOpacity>
@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
                                         >
                                             <CardProduct
                                                 imageUri={product.image}
-                                                imageDescription={product.description.slice(0, 16)}
+                                                imageDescription={product.title.slice(0, 16)}
                                                 imagePrice={product.price}
                                             />
                                         </TouchableOpacity>
@@ -156,7 +156,7 @@ const Home = ({ navigation }) => {
                                         >
                                             <CardProduct
                                                 imageUri={product.image}
-                                                imageDescription={product.description.slice(0, 16)}
+                                                imageDescription={product.title.slice(0, 16)}
                                                 imagePrice={product.price}
                                             />
                                         </TouchableOpacity>
