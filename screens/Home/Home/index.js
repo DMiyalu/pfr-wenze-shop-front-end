@@ -39,6 +39,8 @@ const Home = ({ navigation }) => {
         axios
         .get('http://192.168.43.52:8080/product')
         .then(async(response) => {
+            console.log("UseEffect start")
+            console.log(response.data)
             await dispatch(getProductList(response.data))
         })
         .catch((error) => {
@@ -68,11 +70,11 @@ const Home = ({ navigation }) => {
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                {products['legumes'].map((product) => 
+                                {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
                                     <TouchableOpacity
                                         key={product.productID}
                                         style={styles.touchableOpacityStyle}
-                                        onPress={() => {showProduct(product )}}
+                                        onPress={() => {showProduct(product)}}
                                     >
                                         <CardProduct
                                             imageUri={product.image}
@@ -95,7 +97,7 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {products['cake'].map((product) => 
+                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) =>                      
                                         <TouchableOpacity style={styles.bigElementUI} onPress={() => {showProduct(product)}}>
                                             <Image
                                                 style={styles.sectionImage} 
@@ -118,11 +120,11 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {products['boissons'].map((product) => 
+                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
                                         <TouchableOpacity
                                             key={product.productID}
-                                            style={{ flex: 1 }}
-                                            onPress={() => showProduct(product)}
+                                            style={styles.touchableOpacityStyle}
+                                            onPress={() => {showProduct(product)}}
                                         >
                                             <CardProduct
                                                 imageUri={product.image}
@@ -146,11 +148,11 @@ const Home = ({ navigation }) => {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    {products['farine'].map((product) => 
+                                    {(products.filter((product) => product.categorie === "Boissons")).map((product) => 
                                         <TouchableOpacity
                                             key={product.productID}
-                                            style={{ flex: 1 }}
-                                            onPress={() => showProduct(product)}
+                                            style={styles.touchableOpacityStyle}
+                                            onPress={() => {showProduct(product)}}
                                         >
                                             <CardProduct
                                                 imageUri={product.image}
