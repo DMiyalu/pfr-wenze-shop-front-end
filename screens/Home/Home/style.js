@@ -10,13 +10,36 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingBottom: 10,
     },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+    },
+    searchBox: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 5,
+        flex: 6,
+        borderBottomWidth: 1,
+        borderBottomColor: '#dadada',
+    },
+    textSearch: {
+        flex: 7,
+        marginLeft: -5,
+    },
+    accountBox: {
+        flex: 1,
+        padding: 5,
+    },
     touchableOpacityStyle: {
         flex: 1,
     },
     textTop: {
         fontSize: 24,
         fontWeight: '700',
-        fontFamily: 'Exo-Black',
+        fontFamily: "Exo-Light",
         paddingHorizontal: 20,
         color: "rgba(0, 0, 0, 0.8)",
     },
@@ -75,6 +98,7 @@ const styles = StyleSheet.create({
     },
     sectionTitre: {
         fontSize: 24,
+        fontFamily: "Exo-Light",
         fontWeight: '700',
         marginTop: 10,
         paddingHorizontal: 20,

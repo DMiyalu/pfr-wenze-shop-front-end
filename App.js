@@ -59,17 +59,6 @@ function MyTabs() {
       />
 
       <Tab.Screen 
-        name="User" 
-        component={User}
-        options={{
-          tabBarLabel: 'Compte',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-circle-outline" color={color} size={26} />
-          ),
-        }}
-      />
-
-      <Tab.Screen 
         name="About" 
         component={About}
         options={{
@@ -84,21 +73,15 @@ function MyTabs() {
 }
 
 
-export default function App() {
+const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
         <MyTabs />
       </NavigationContainer>
     </Provider>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+export default App

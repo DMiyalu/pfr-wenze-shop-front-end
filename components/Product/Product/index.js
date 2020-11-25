@@ -11,12 +11,12 @@ import {
     View,  
     Image,
     SafeAreaView, 
-    Picker, 
+    Picker,
+    TextInput,
     ScrollView, 
     TouchableOpacity,
     Alert
 } from 'react-native'
-
 
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
@@ -80,74 +80,10 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         return (
             <SafeAreaView style={styles.container}>
-            <Header navigation={navigation} screen='Search'/>
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
                 <View style={styles.main} > 
-                    <Text style={styles.topTitle}>
-                        Livraison à domicile en tout point dans la ville de Kinshasa.
-                    </Text>
                     <View style={styles.imageBox} >
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.imageFile} source={product.image} />
-                        </View>
-                        <View style={styles.description}>
-                            <Text style={styles.titleProduct}>{product.title.toUpperCase()}</Text>
-                            <Text style={styles.textDescription}>{product.description}</Text>
-                            <Text style={styles.price}>{product.price}$ par kilos </Text>
-                        </View>
-                    </View>
-                    <View style={styles.details}>
-                        <View style={styles.quantiteBox}>
-                            <View>
-                                <MaterialCommunityIcons
-                                    name="checkbox-blank-circle" color="rgba(0, 0, 200, 0.6)" size={10} 
-                                />
-                            </View>
-                            <View>
-                                <Text 
-                                    style={{ marginHorizontal: 5, fontSize: 14 }}
-                                > 
-                                    Qté:
-                                </Text>
-                            </View>
-                            <View>
-                            <Picker
-                                mode={'dialog'}
-                                selectedValue={count}
-                                style={{ height: 50, width: 150 }}
-                                onValueChange={(itemValue, itemIndex) => setCountProduct(itemValue)}
-                            >           
-                                {listValueCount.map((value) => 
-                                    <Picker.Item 
-                                        key={value}
-                                        label={value}  
-                                        value={value}
-                                    />
-                                )}              
-                            </Picker>
-                            </View>
-                        </View>
-                        <View style={styles.quantiteBox}>
-                            <View>
-                                <MaterialCommunityIcons
-                                    name="checkbox-blank-circle" color="rgba(0, 0, 200, 0.6)" size={10}
-                                />
-                            </View>
-                            <View>
-                                <Text 
-                                    style={{ marginHorizontal: 5, fontSize: 14 }}
-                                > 
-                                    Total:
-                                </Text>
-                            </View>
-                            <View>
-                                <Text 
-                                    style={{ marginHorizontal: 5, fontSize: 14, color: "rgba(245, 62, 82, 0.6)" }}
-                                > 
-                                    {count * product.price} $
-                                </Text>
-                            </View>
-                        </View>
+                        <Image style={styles.imageFile} source={product.image} />
                     </View>
                     <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity
@@ -156,33 +92,9 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                         >
                             <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
                         </TouchableOpacity>
-                    </View>
-                    <View style={styles.sectionSliders}>
-                            <Text style={styles.textTop} >
-                                Produits commandés en accompagnement                          
-                            </Text>
-                            <View style={styles.boxSliders} >
-                                <ScrollView 
-                                    horizontal={true}
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    <CardProduct  
-                                        imageUri={require('../../../assets/product/viande_pack.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    <CardProduct 
-                                        imageUri={require('../../../assets/product/viande_hachee.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                    <CardProduct 
-                                        imageUri={require('../../../assets/product/viande-poulet.jpg')}
-                                        imageDescription="VIANDE HACHEE"
-                                        imagePrice="5$ par kilos"
-                                    />
-                                </ScrollView>
-                            </View>
+                        <TextInput
+                            inlineImageLeft='search_icon'
+                        />
                     </View>
                 </View>
             </ScrollView>

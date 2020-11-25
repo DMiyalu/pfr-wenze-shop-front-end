@@ -2,12 +2,13 @@ import React, {  useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProduct } from '../../../Redux/Product/product.actions'
 import { getProductList } from '../../../Redux/AllProduct/allProduct.actions'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
-import Header from '../../../components/Header'
 import styles from './style'
 import { 
-    Text, 
+    Text,
+    TextInput,
     View,  
     SafeAreaView,
     ScrollView,
@@ -21,6 +22,7 @@ const Home = ({ navigation }) => {
     const [apiData, setApiData] = useState([])
     const { products } = useSelector((state) => state.products)
     const [isLoading, setIsLoading] = useState(false)
+    const [textSearch, setTextSearch] = useState("")
     const dispatch = useDispatch()
 
     //Affiche un rendu de chargement des données(loader 1)
@@ -114,6 +116,11 @@ const Home = ({ navigation }) => {
         navigation.navigate('Product')
     }
 
+    //Fait la recherche selon mot entré dans la barre de recherche
+    const getSearchData = () => {
+        console.log("Search function", textSearch)
+    } 
+
     //Recupère les données via l'API et les envoies vers le store
     useEffect(() => {
         axios
@@ -135,7 +142,36 @@ const Home = ({ navigation }) => {
         <SafeAreaView style={styles.safeAreaViewStyle} >
         <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
             <View style={styles.container} >
-                <Header navigation={navigation} screen='Search'/>
+                <View style={styles.header}>
+                    <View style={styles.searchBox}>
+                        <MaterialCommunityIcons 
+                            name="magnify" 
+                            color="rgba(245, 62, 82, 0.6)" 
+                            size={20} 
+                            style={{ marginLeft: -4, marginRight: 10 }}
+                            onPress={() => getSearchData()}
+                        />
+                        <TextInput
+                            style={styles.textSearch}
+                            placeholder="Recherche..."
+                            placeholderTextColor="gray"
+                            underlineColorAndroid="transparent"
+                            clearTextOnFocus={false}
+                            onChangeText={(value) => setTextSearch(value)}
+                            onSubmitEditing={() => getSearchData()}
+                        />
+                    </View>
+                    <View style={styles.accountBox}>
+                        <MaterialCommunityIcons 
+                            name="account-circle-outline" 
+                            color="rgba(245, 62, 82, 0.6)" 
+                            size={20} 
+                            style={{ marginLeft: 10, marginRight: 10 }} 
+                            onPress={() => navigation.navigate('User')}
+                        />
+                    </View>
+                </View>
+
                 <ScrollView
                     scrollEventThrottle={20}
                 >

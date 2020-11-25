@@ -22,24 +22,16 @@ const styles = StyleSheet.create({
     },
     imageBox: {
         display: "flex",
-        flexDirection: "row",
         justifyContent: "center",
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        borderRadius: 5,
-        borderColor: "rgba(0, 0, 0, 0.10)",
-        borderWidth: 1,
-    },
-    imageContainer: {
-        flex: 1,
-        paddingHorizontal: 5,
-        paddingVertical: 5,
+        height: 210,
+        width: width - 20,
+        marginVertical: 15,
     },
     imageFile: {
         flex: 1,
         width: null,
         height: null,
-        resizeMode: "cover",
+        resizeMode: "contain",
     },
     description: {
         flex: 1,
