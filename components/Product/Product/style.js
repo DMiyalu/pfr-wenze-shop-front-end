@@ -11,61 +11,52 @@ const styles = StyleSheet.create({
     },
     main: {
         display: "flex",
-        marginTop: 5,
-        marginHorizontal: 20,
     },
-    topTitle: {
-        paddingVertical: 5,
-        fontSize: 20,
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: "rgba(245, 62, 82, 0.6)",
+    },
+    returnIcon: {
+        flex: 1,
+    },
+    accountBox: {
+        flex: 1,
+    },
+    accountIcon: {
+        position: 'relative',
+        left: 130,
+    },
+    description: {
+        fontSize: 18,
         fontWeight: "300",
-        color: "rgba(0, 0, 0, 0.45)",  
+        color: "black",
+        marginVertical: 3,
+        paddingRight: 5,
     },
     imageBox: {
         display: "flex",
         justifyContent: "center",
         height: 210,
-        width: width - 20,
-        marginVertical: 15,
+        width: width,
     },
     imageFile: {
         flex: 1,
         width: null,
         height: null,
-        resizeMode: "contain",
-    },
-    description: {
-        flex: 1,
-        paddingVertical: 5,
-    },
-    titleProduct: {
-        fontSize: 18,
-        fontWeight: '700',
-        textAlign: "left",
-        color: "rgba(0, 0, 0, 0.9)",
-    },
-    textDescription: {
-        fontSize: 14,
-        color: "rgba(0, 0, 0, 0.9)",
-        textAlign: "left",
-        marginTop: 8,
-    },
-    price: {
-        fontSize: 16,
-        color: "rgba(245, 62, 82, 0.6)",
-        marginTop: 8,
+        resizeMode: "cover",
     },
     details: {
         display: "flex",
         flexDirection: "column",
-        marginTop: 10,
+        marginTop: 20,
+        marginHorizontal: 20,
     },
-    quantiteBox: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    totalBox: {
-        flex: 1,
+    topTitle: {
+        fontSize: 26,
+        fontWeight: '700',
+        fontColor: 'black',
     },
     boutonAjouter: {
         display: 'flex',
@@ -80,27 +71,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         marginTop: 20,  
     },
-    sectionSliders: {
-        marginTop: 20,
-    },
-    textTop: {
-        fontSize: 24,
-        fontWeight: '700',
-        marginTop: 10,
-    },
-    boxSliders: {
-        marginTop: 20,
-    },
-    dialogBox: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 10,
-    },
-    dialogText: {
-        textAlign: 'center',
-        color: 'rgba(0, 0, 200, 0.6)',
-    }
 })
 
 export default styles

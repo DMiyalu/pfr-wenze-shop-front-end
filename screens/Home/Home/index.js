@@ -100,7 +100,7 @@ const Home = ({ navigation }) => {
                             imageUri={product.image}
                             imageDescription={product.title.slice(0, 16)}
                             imagePrice={product.price}
-                            unite={product.unite}
+                            unite={product.unite.slice(0, 5)}
                         />
                     </TouchableOpacity>
                 )}
@@ -145,7 +145,7 @@ const Home = ({ navigation }) => {
                             imageUri={product.image}
                             imageDescription={product.title.slice(0, 16)}
                             imagePrice={product.price}
-                            unite={product.unite}
+                            unite={product.unite.slice(0, 5)}
                         />
                     </TouchableOpacity>
                 )}

@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
 import styles from './style'
 import Dialog, { DialogContent, SlideAnimation } from 'react-native-popup-dialog'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Avatar } from 'react-native-paper'
 import { 
     Text, 
     View,  
     Image,
     SafeAreaView, 
+    StatusBar,
     Picker,
     TextInput,
     ScrollView, 
@@ -78,9 +81,28 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         return (
             <SafeAreaView style={styles.container}>
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
-                <View style={styles.main} > 
+                <View style={styles.main} >
+                    <View style={styles.header}>
+                        <View style={styles.returnIcon}>
+                            <MaterialCommunityIcons 
+                                name="menu-left" 
+                                color="white" 
+                                size={35} 
+                                style={{ position: 'relative', left: 0, marginLeft: 0 }}
+                                onPress={() => navigation.goBack()}
+                            />
+                        </View>
+                        <View style={styles.accountBox}>
+                            <Avatar.Image style={styles.accountIcon} size={24} source={require('../../../assets/product/bananes.jpg')} />
+                        </View>
+                    </View>
                     <View style={styles.imageBox} >
                         <Image style={styles.imageFile} source={product.image} />
+                    </View>
+                    <View style={styles.details}>
+                        <Text style={styles.topTitle}>{product.title}</Text>
+                        <Text style={styles.description}>{product.description}</Text>
+                        <Text style={styles.price}>Prix: {product.price} Fc</Text>
                     </View>
                     <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity

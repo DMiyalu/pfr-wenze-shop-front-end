@@ -27,7 +27,7 @@ import {
                     </View>
                     <View>
                         <Text style={styles.imagePrice} >
-                            {props.imagePrice} / {props.unite}. 
+                            {props.imagePrice} Fc/ {props.unite}.
                         </Text>
                     </View>  
                 </View>

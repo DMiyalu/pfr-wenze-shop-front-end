@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     },
     imageBox: {
         flex: 2,
-        paddingHorizontal: 5,
         width: 140,
     },
     imageTextDescription: {
