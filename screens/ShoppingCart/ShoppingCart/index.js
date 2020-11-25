@@ -11,7 +11,6 @@ import {
     TouchableOpacity,
     StatusBar   
 } from 'react-native'
-import Header from '../../../components/Header'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './style'
 
@@ -105,7 +104,6 @@ const ShoppingCart = ({ navigation }) => {
     return (
             <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
-                <Header navigation={navigation} screen='Search'/>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.main}>
                         <View style={styles.titleTop}>

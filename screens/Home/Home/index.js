@@ -7,7 +7,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
 import { styles, getViewStyle } from './style'
-import SearchResults from '../../../services/searchResults'
 import { 
     Text,
     TextInput,
@@ -127,7 +126,32 @@ const Home = ({ navigation }) => {
     //Rend visible la section des resultats d'une recherche
     const getSearchData = () => {
         setDisplayState("flex")
-    } 
+    }
+
+    //Rendu d'une recherche
+    const showSearchResultView = () => {
+        return (
+            <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+            >
+                {(products.filter((product) => product.categorie === "Farine")).map((product) => 
+                    <TouchableOpacity
+                        key={product._id}
+                        style={styles.touchableOpacityStyle}
+                        onPress={() => {showOneProduct(product)}}
+                    >
+                        <CardProduct
+                            imageUri={product.image}
+                            imageDescription={product.title.slice(0, 16)}
+                            imagePrice={product.price}
+                            unite={product.unite}
+                        />
+                    </TouchableOpacity>
+                )}
+            </ScrollView>
+        )
+    }
 
 
     //Recupère les données via l'API et les envoies vers le store
@@ -171,7 +195,7 @@ const Home = ({ navigation }) => {
                         />
                     </View>
                     <View style={styles.accountBox}>
-                        <Avatar.Image size={30} source={require('../../../assets/product/bananes.jpg')} />
+                        <Avatar.Image size={24} source={require('../../../assets/product/cuisse.jpg')} />
                     </View>
                 </View>
 
@@ -181,7 +205,9 @@ const Home = ({ navigation }) => {
                     <View style={styles.mainSliders} >
                         <View style={getViewStyle(displayState)}>
                             <Text style={{ paddingHorizontal: 20, paddingBottom: 10 }}>Resultats pour le mot "{textSearch}"</Text>
-                            <SearchResults />
+                            <View>
+                                {showSearchResultView()}
+                            </View>
                         </View>
                         <Text style={styles.textTop} >
                             Des légumes et des Viandes 100% Bio...

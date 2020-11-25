@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Product from './Product'
-import Search from '../Search'
 const Stack = createStackNavigator();
 
 
@@ -12,7 +11,6 @@ export class ProductEntry extends Component {
                 <NavigationContainer independent={true}>
                     <Stack.Navigator initialRouteName="Product">
                         <Stack.Screen name="Product" component={Product} options={{ headerShown: false }} />
-                        <Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
                     </Stack.Navigator>
                 </NavigationContainer>
         )

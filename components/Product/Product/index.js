@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import Header from '../../Header'
-import CardProduct from '../../CardProduct'
 import styles from './style'
 import Dialog, { DialogContent, SlideAnimation } from 'react-native-popup-dialog'
 import { 
