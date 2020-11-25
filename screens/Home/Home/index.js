@@ -5,7 +5,8 @@ import { getProductList } from '../../../Redux/AllProduct/allProduct.actions'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
-import styles from './style'
+import { styles, getViewStyle } from './style'
+import SearchResults from '../../../services/searchResults'
 import { 
     Text,
     TextInput,
@@ -19,12 +20,14 @@ import {
 
 
 const Home = ({ navigation }) => {
-    const [apiData, setApiData] = useState([])
+    const [dataSearchResults, setDataSearchResults] = useState([])
     const { products } = useSelector((state) => state.products)
     const [isLoading, setIsLoading] = useState(false)
-    const [textSearch, setTextSearch] = useState("")
+    const [textSearch, setTextSearch] = useState("matembele")
+    const [displayState, setDisplayState] = useState("none")
     const dispatch = useDispatch()
 
+    
     //Affiche un rendu de chargement des données(loader 1)
     const showSmallEmptyCard = () => {
         return (
@@ -41,6 +44,7 @@ const Home = ({ navigation }) => {
         )
     }
 
+
     //(Loader 2)
     const showBigEmptyCard = () => {
         return (
@@ -56,6 +60,7 @@ const Home = ({ navigation }) => {
             </ScrollView>
         )
     }
+
 
     //Affiche les produits dans la section des promotions produits
     const showPromotionnalProducts = (categorie) => {
@@ -103,6 +108,7 @@ const Home = ({ navigation }) => {
         )
     }
     
+
     // Affiche les détails sur un produit
     const showOneProduct = (product) => {
         dispatch(getProduct({
@@ -116,10 +122,12 @@ const Home = ({ navigation }) => {
         navigation.navigate('Product')
     }
 
-    //Fait la recherche selon mot entré dans la barre de recherche
+
+    //Rend visible la section des resultats d'une recherche
     const getSearchData = () => {
-        console.log("Search function", textSearch)
+        setDisplayState("flex")
     } 
+
 
     //Recupère les données via l'API et les envoies vers le store
     useEffect(() => {
@@ -176,6 +184,10 @@ const Home = ({ navigation }) => {
                     scrollEventThrottle={20}
                 >
                     <View style={styles.mainSliders} >
+                        <View style={getViewStyle(displayState)}>
+                            <Text style={{ paddingHorizontal: 20, paddingBottom: 10 }}>Resultats pour le mot "{textSearch}"</Text>
+                            <SearchResults />
+                        </View>
                         <Text style={styles.textTop} >
                             Des légumes et des Viandes 100% Bio...
                         </Text>

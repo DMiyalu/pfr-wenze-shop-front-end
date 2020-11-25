@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
 const { width, height } = Dimensions.get('window')
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     safeAreaViewStyle: {
         flex: 1, 
         backgroundColor: "white",
@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingBottom: 10,
+    },
+    resultsBox: {
+        marginBottom: 20,
+        display: "none",
     },
     header: {
         display: 'flex',
@@ -141,4 +145,9 @@ const styles = StyleSheet.create({
     }
 })
 
-export default styles
+export const getViewStyle = (displayState) => {
+    return {
+        marginBottom: 20,
+        display: displayState,
+    }
+}
