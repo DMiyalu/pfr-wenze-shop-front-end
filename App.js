@@ -64,7 +64,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'A propos',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="help-rhombus-outline" color={color} size={26} />
+            <MaterialCommunityIcons name="information" color={color} size={26} />
           ),
         }}
       />
