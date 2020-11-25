@@ -35,6 +35,9 @@ export const styles = StyleSheet.create({
     },
     accountBox: {
         flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: 5,
     },
     touchableOpacityStyle: {

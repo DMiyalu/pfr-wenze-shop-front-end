@@ -1,5 +1,6 @@
 import React, {  useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Avatar } from 'react-native-paper'
 import { getProduct } from '../../../Redux/Product/product.actions'
 import { getProductList } from '../../../Redux/AllProduct/allProduct.actions'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -27,7 +28,7 @@ const Home = ({ navigation }) => {
     const [displayState, setDisplayState] = useState("none")
     const dispatch = useDispatch()
 
-    
+
     //Affiche un rendu de chargement des données(loader 1)
     const showSmallEmptyCard = () => {
         return (
@@ -170,13 +171,7 @@ const Home = ({ navigation }) => {
                         />
                     </View>
                     <View style={styles.accountBox}>
-                        <MaterialCommunityIcons 
-                            name="account-circle-outline" 
-                            color="rgba(245, 62, 82, 0.6)" 
-                            size={20} 
-                            style={{ marginLeft: 10, marginRight: 10 }} 
-                            onPress={() => navigation.navigate('User')}
-                        />
+                        <Avatar.Image size={30} source={require('../../../assets/product/bananes.jpg')} />
                     </View>
                 </View>
 
