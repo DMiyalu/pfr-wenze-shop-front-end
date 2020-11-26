@@ -32,8 +32,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "300",
         color: "black",
-        marginVertical: 3,
+        marginVertical: 5,
         paddingRight: 5,
+    },
+    price: {
+        fontSize: 18,
     },
     imageBox: {
         display: "flex",
@@ -71,6 +74,62 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         marginTop: 20,  
     },
+    line: {
+        borderWidth: 1,
+        borderColor: "rgba(245, 62, 82, 0.6)",
+        width: 50,
+        padding: 0,
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    totalEtQuantite: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    totalBox: {
+        display: 'flex',
+        flex: 2,
+        flexDirection: 'column',
+    },
+    quantiteBox: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        padding: 0,
+    },
+    totalTitle: {
+        fontSize: 18,
+        fontWeight: '700',
+        marginBottom: 5,
+    },
+    input: {
+        width: 30,
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: '700',
+        marginHorizontal: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#dedede',
+    },
+    setCount: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 0,
+    },
+    sign: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 18,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#dedede',
+        width: 23,
+        height: 23,
+    }
 })
 
 export default styles

@@ -118,6 +118,7 @@ const Home = ({ navigation }) => {
             price: product.price,
             number: product.number,
             image: product.image,
+            unite: product.unite,
         }))
         navigation.navigate('Product')
     }

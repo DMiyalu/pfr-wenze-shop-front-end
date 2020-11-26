@@ -82,7 +82,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
             <SafeAreaView style={styles.container}>
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
                 <View style={styles.main} >
-                    <View style={styles.header}>
+                    <View style={styles.header}> 
                         <View style={styles.returnIcon}>
                             <MaterialCommunityIcons 
                                 name="menu-left" 
@@ -101,8 +101,44 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                     </View>
                     <View style={styles.details}>
                         <Text style={styles.topTitle}>{product.title}</Text>
+                        <Text style={styles.line}></Text>
                         <Text style={styles.description}>{product.description}</Text>
-                        <Text style={styles.price}>Prix: {product.price} Fc</Text>
+                        <Text style={styles.price}>Prix: {product.price} Fc/ {product.unite}</Text>
+                        <Text style={styles.price}>TVA: 0.0 Fc</Text>
+                        <View style={styles.totalEtQuantite}>
+                            <View style={styles.totalBox}>
+                                <Text style={styles.totalTitle}>Total:</Text>
+                                <Text style={styles.totalValue}>{product.price * count} Fc</Text>
+                            </View>
+                            <View style={styles.quantiteBox}>
+                                <Text style={styles.totalTitle}>Quantite:</Text>
+                                <View style={styles.setCount}>
+                                    <TouchableOpacity
+                                        style={styles.sign}
+                                        onPress={() => {
+                                            if (count > 1) setCount(count - 1)
+                                        }}
+                                    >
+                                        -
+                                    </TouchableOpacity>
+                                    <TextInput 
+                                        placeholder={count} 
+                                        style={styles.input}
+                                        underlineColorAndroid="gray"
+                                        selectionColor="blue"
+                                        maxLength={3}
+                                        keyboardType='numeric'
+                                        onChangeText={(value) => setCount(value)}
+                                    />
+                                    <TouchableOpacity
+                                        style={styles.sign}
+                                        onPress={() => setCount(count + 1)}
+                                    >
+                                        +
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
                     </View>
                     <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity
@@ -111,9 +147,6 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                         >
                             <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
                         </TouchableOpacity>
-                        <TextInput
-                            inlineImageLeft='search_icon'
-                        />
                     </View>
                 </View>
             </ScrollView>
