@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native'
 
 
 const { width, height } = Dimensions.get('window')
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
         paddingHorizontal: 15,
+        transition: 'all 0.5s',
+    },
+    titleTopText: !pressed {
+        color: 'blue',
     },
     productSection: {
         display: 'flex',
@@ -175,4 +179,8 @@ const styles = StyleSheet.create({
     }
 })
 
-export default styles
+export const getViewStyle = () => {
+    return {
+        display: 'flex',
+    }
+}

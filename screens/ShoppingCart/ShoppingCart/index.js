@@ -11,7 +11,7 @@ import {
     StatusBar   
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import styles from './style'
+import { styles, getViewStyle } from './style'
 
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
@@ -46,20 +46,22 @@ const ShoppingCart = ({ navigation }) => {
                 <Text style={styles.titleTopText}>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</Text>
             </View>
             {panier.listFruits.map((fruit) =>
-                <View key={fruit._id} style={styles.uiSectionBox} >
-                    <View style={styles.imageBox}>
-                        <Image
-                            style={styles.imageFile}
-                            source={fruit.image}
-                        />
-                    </View>
-                    <View style={styles.details}>
-                        <View style={styles.title}>
-                            <Text style={styles.titleProduct}>{fruit.title}</Text>
+                <View style={getViewStyle()}>
+                    <View key={fruit._id} style={styles.uiSectionBox} >
+                        <View style={styles.imageBox}>
+                            <Image
+                                style={styles.imageFile}
+                                source={fruit.image}
+                            />
                         </View>
-                        <View style={styles.price}>
-                            <Text style={styles.cost}>{fruit.number} x {fruit.price} Fc</Text>
-                            <Text style={styles.total}>{fruit.number * fruit.price} Fc</Text>
+                        <View style={styles.details}>
+                            <View style={styles.title}>
+                                <Text style={styles.titleProduct}>{fruit.title}</Text>
+                            </View>
+                            <View style={styles.price}>
+                                <Text style={styles.cost}>{fruit.number} x {fruit.price} Fc</Text>
+                                <Text style={styles.total}>{fruit.number * fruit.price} Fc</Text>
+                            </View>
                         </View>
                     </View>
                 </View>
