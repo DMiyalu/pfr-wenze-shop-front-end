@@ -42,38 +42,28 @@ const ShoppingCart = ({ navigation }) => {
     const showShoppingCart = () => {
         return (
             <View>
+            <View style={styles.titleTop}>
+                <Text style={styles.titleTopText}>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</Text>
+            </View>
             {panier.listFruits.map((fruit) =>
                 <View key={fruit._id} style={styles.uiSectionBox} >
-                    <View style={styles.article} key={fruit._id}>
-                        <View style={styles.imageBox}>
-                            <Image style={styles.imageFile} source={fruit.image} />
+                    <View style={styles.imageBox}>
+                        <Image
+                            style={styles.imageFile}
+                            source={fruit.image}
+                        />
+                    </View>
+                    <View style={styles.details}>
+                        <View style={styles.title}>
+                            <Text style={styles.titleProduct}>{fruit.title}</Text>
                         </View>
-                        <View style={styles.details}>
-                            <View>
-                                <Text style={styles.titleProduct}>{fruit.title.toUpperCase().slice(0, 16)}</Text>
-                            </View>
-                            <View style={{display: 'flex', flexDirection: 'column'}}>
-                                <View>
-                                    
-                                </View>
-                                <Text 
-                                    style={styles.uiTextPrice}
-                                >
-                                    {fruit.price} $
-                                </Text>
-                            </View>
+                        <View style={styles.price}>
+                            <Text style={styles.cost}>{fruit.number} x {fruit.price} Fc</Text>
+                            <Text style={styles.total}>{fruit.number * fruit.price} Fc</Text>
                         </View>
                     </View>
-                    <TouchableOpacity onPress={() => deleteProduct(fruit._id)} style={styles.uiQte}>
-                        <View style={styles.uiQteIcon}>
-                            <MaterialCommunityIcons 
-                                name="close"
-                                color="rgba(250, 250, 250, 1.0)" 
-                                size={18}
-                            />
-                        </View>             
-                    </TouchableOpacity>
-                </View>)}
+                </View>
+            )}
             </View>
         )
     }
@@ -89,23 +79,29 @@ const ShoppingCart = ({ navigation }) => {
             <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.main}>
-                        <View style={styles.titleTop}>
-                            <Text style={styles.titleTopText}>Livraison à domicile en tout point dans la ville de Kinshasa.</Text>
-                        </View>
                         <View style={styles.productSection}>
                             {( panier.listFruits.length === 0) ? showEmptyScreen() : showShoppingCart() }
                         </View>
                         <View style={styles.resume}>
-                            <Text>Total: {panier.total} Fc</Text>
-                            <Text>Livraison: {panier.deliveryCost} Fc</Text>
-                            <Text>Net à payer:  {panier.netToPay} Fc</Text>
+                            <View style={styles.resumeSousTotal}>
+                                <Text style={styles.resumeTextLeft}>Sous-total:</Text>
+                                <Text style={styles.resumeTextRight}>{panier.total} Fc</Text>
+                            </View>
+                            <View style={styles.resumeSousTotal}>
+                                <Text style={styles.resumeTextLeft}>Livraison:</Text>
+                                <Text style={styles.resumeTextRight}>{panier.deliveryCost} Fc</Text>
+                            </View>
+                            <View style={styles.resumeTotal}>
+                                <Text style={styles.resumeTotalLeft}>Net à payer:</Text>
+                                <Text style={styles.resumeTotalRight}>{panier.netToPay} Fc</Text>
+                            </View>
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
                             onPress={() => payOrder()}
                         >
                             <View style={styles.boutonBox}>
-                                <Text style={styles.uiButtonText}>Commandez</Text>
+                                <Text style={styles.uiButtonText}>Commander</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

@@ -16,12 +16,6 @@ const styles = StyleSheet.create({
     main: {
         paddingHorizontal: 10,
     },
-    uiSectionBox: { 
-        display: 'flex', 
-        flexDirection: 'row', 
-        justifyContent: 'center', 
-        alignItems: 'center' 
-    },
     pickerStyle: { 
         height: 50,
         width: 100,
@@ -58,9 +52,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     titleTopText: {
-        fontSize: 20,
-        fontWeight: '300',
-        textAlign: 'left',
+        fontSize: 18,
+        fontWeight: '700',
+        textAlign: 'center',
+        paddingHorizontal: 15,
     },
     productSection: {
         display: 'flex',
@@ -80,7 +75,7 @@ const styles = StyleSheet.create({
     },
     imageBox: {
         flex: 1,
-        width: 100,
+        borderRadius: 5,
         height: 80,
     },
     imageFile: {
@@ -88,23 +83,67 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'cover',
+        borderRadius: 5,
+    },
+    uiSectionBox: { 
+        display: 'flex', 
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderBottomColor: '#dedede',
     },
     details: {
+        flex: 3,
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: 10,
+        paddingLeft: 10,
+    },
+    price: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    total: {
         flex: 1,
-        flexDirection: 'column'
+    },
+    cost: {
+        flex: 3,
     },
     titleProduct: {
-        fontWeight: '500',
-        fontSize: 20,
+        fontWeight: '600',
+        fontSize: 18,
         color: "rgba(0, 0, 0, 0.8) ",
     },
     resume: {
         display: 'flex',
+        paddingVertical: 30,
+    },
+    resumeSousTotal: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    resumeTotal: {
+        display: 'flex',
+        flexDirection: 'row',
         paddingVertical: 10,
-        paddingHorizontal: 0,
-        marginVertical: 5,
-        borderTopColor: "#dedede",
-        borderTopWidth: StyleSheet.hairlineWidth,
+        marginTop: 10,
+        borderTopWidth: 1,
+        borderTopColor: '#dedede',
+    },
+    resumeTextLeft: {
+        flex: 5,
+    },
+    resumeTotalLeft: {
+        flex: 5,
+        fontWeight: '600',
+    },
+    resumeTextRight: {
+        flex: 1,
+        marginLeft: -12,
+    },
+    resumeTotalRight: {
+        flex: 1,
+        marginLeft: -12,
+        fontWeight: '700',
     },
     boutonBox: {
         display: 'flex',
