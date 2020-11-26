@@ -6,7 +6,6 @@ import {
     View, 
     SafeAreaView,
     Image, 
-    Picker, 
     ScrollView, 
     TouchableOpacity,
     StatusBar   
@@ -43,11 +42,11 @@ const ShoppingCart = ({ navigation }) => {
     const showShoppingCart = () => {
         return (
             <View>
-            {panier.listFruits.map((fruit) => 
-                <View style={styles.uiSectionBox} key={fruit.productID}>
-                    <View style={styles.article}>
+            {panier.listFruits.map((fruit) =>
+                <View key={fruit._id} style={styles.uiSectionBox} >
+                    <View style={styles.article} key={fruit._id}>
                         <View style={styles.imageBox}>
-                            <Image style={styles.imageFile} source={require('../../../assets/product/viande-poulet.jpg')} />
+                            <Image style={styles.imageFile} source={fruit.image} />
                         </View>
                         <View style={styles.details}>
                             <View>
@@ -55,15 +54,7 @@ const ShoppingCart = ({ navigation }) => {
                             </View>
                             <View style={{display: 'flex', flexDirection: 'column'}}>
                                 <View>
-                                    <Picker
-                                        selectedValue={fruit.number}
-                                        style={styles.pickerStyle}
-                                        onValueChange={(numberEntry) => setNumber(parseInt(numberEntry))}
-                                    >                              
-                                        {listValueCount.map((value) => 
-                                            <Picker.Item label={value} value={value} key={value} />
-                                        )}          
-                                    </Picker>
+                                    
                                 </View>
                                 <Text 
                                     style={styles.uiTextPrice}
@@ -73,7 +64,7 @@ const ShoppingCart = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                    <TouchableOpacity onPress={() => deleteProduct(fruit.productID)} style={styles.uiQte}>
+                    <TouchableOpacity onPress={() => deleteProduct(fruit._id)} style={styles.uiQte}>
                         <View style={styles.uiQteIcon}>
                             <MaterialCommunityIcons 
                                 name="close"
@@ -87,14 +78,6 @@ const ShoppingCart = ({ navigation }) => {
         )
     }
 
-
-    const getProduct = () => {
-        return (
-            <View>
-                {( panier.listFruits.length === 0) ? showEmptyScreen() : showShoppingCart() }
-            </View>
-        )
-    }
 
     const payOrder = () => {
         navigation.navigate('Payment')
@@ -110,12 +93,12 @@ const ShoppingCart = ({ navigation }) => {
                             <Text style={styles.titleTopText}>Livraison à domicile en tout point dans la ville de Kinshasa.</Text>
                         </View>
                         <View style={styles.productSection}>
-                            {getProduct()}
+                            {( panier.listFruits.length === 0) ? showEmptyScreen() : showShoppingCart() }
                         </View>
                         <View style={styles.resume}>
-                            <Text>Total: {panier.total} $</Text>
-                            <Text>TVA: 0.00 $</Text>
-                            <Text>Net à payer:  {panier.total} $</Text>
+                            <Text>Total: {panier.total} Fc</Text>
+                            <Text>Livraison: {panier.deliveryCost} Fc</Text>
+                            <Text>Net à payer:  {panier.netToPay} Fc</Text>
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}

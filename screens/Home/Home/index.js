@@ -110,9 +110,9 @@ const Home = ({ navigation }) => {
     
 
     // Affiche les détails sur un produit
-    const showOneProduct = (product) => {
-        dispatch(getProduct({
-            productID: product.productID,
+    const showOneProduct = async (product) => {
+        await dispatch(getProduct({
+            _id: product._id,
             title: product.title,
             description: product.description,
             price: product.price,

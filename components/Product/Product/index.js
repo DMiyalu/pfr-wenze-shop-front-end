@@ -51,7 +51,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const testProductExistAlready = () => {
 
             for (let element of panier.listFruits) {
-                if (product.productID === element.productID) return true
+                if (product._id === element._id) return true
                 else continue
             }
             return false
