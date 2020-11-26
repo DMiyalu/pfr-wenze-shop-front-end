@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Product from '../../components/Product/Product'
 import Home from './Home'
 import User from '../User'
-
 const Stack = createStackNavigator();
 
 export class HomeEntry extends Component {

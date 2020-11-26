@@ -79,22 +79,25 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         return (
             <SafeAreaView style={styles.container}>
+            <View style={styles.header}> 
+                <View style={styles.returnIcon}>
+                    <MaterialCommunityIcons 
+                        name="menu-left" 
+                        color="white" 
+                        size={35} 
+                        style={{ position: 'relative', left: 0, marginLeft: 0 }}
+                        onPress={() => navigation.goBack()}
+                    />
+                </View>
+                <TouchableOpacity 
+                    style={styles.accountBox}
+                    onPress={() => navigation.navigate('Product')}
+                >
+                    <Avatar.Image style={styles.accountIcon} size={24} source={require('../../../assets/product/bananes.jpg')} />
+                </TouchableOpacity>
+            </View>
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
                 <View style={styles.main} >
-                    <View style={styles.header}> 
-                        <View style={styles.returnIcon}>
-                            <MaterialCommunityIcons 
-                                name="menu-left" 
-                                color="white" 
-                                size={35} 
-                                style={{ position: 'relative', left: 0, marginLeft: 0 }}
-                                onPress={() => navigation.goBack()}
-                            />
-                        </View>
-                        <View style={styles.accountBox}>
-                            <Avatar.Image style={styles.accountIcon} size={24} source={require('../../../assets/product/bananes.jpg')} />
-                        </View>
-                    </View>
                     <View style={styles.imageBox} >
                         <Image style={styles.imageFile} source={product.image} />
                     </View>
@@ -118,7 +121,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                             if (count > 1) setCount(count - 1)
                                         }}
                                     >
-                                        <Text>-</Text>
+                                        <Text style={styles.signUI}>-</Text>
                                     </TouchableOpacity>
                                     <TextInput 
                                         placeholder={count} 
@@ -133,7 +136,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                         style={styles.sign}
                                         onPress={() => setCount(count + 1)}
                                     >
-                                        <Text>+</Text>
+                                        <Text style={styles.signUI}>+</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

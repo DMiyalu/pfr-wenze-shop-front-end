@@ -19,14 +19,15 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(245, 62, 82, 0.6)",
     },
     returnIcon: {
-        flex: 1,
+        flex: 5,
     },
     accountBox: {
         flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     accountIcon: {
-        position: 'relative',
-        left: 130,
     },
     description: {
         fontSize: 18,
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 210,
         width: width,
+        position: 'fixe',
     },
     imageFile: {
         flex: 1,
@@ -129,6 +131,9 @@ const styles = StyleSheet.create({
         borderColor: '#dedede',
         width: 23,
         height: 23,
+    },
+    signUI: {
+        textAlign: 'center',
     }
 })
 

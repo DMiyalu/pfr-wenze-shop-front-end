@@ -195,9 +195,12 @@ const Home = ({ navigation }) => {
                             onSubmitEditing={() => getSearchData()}
                         />
                     </View>
-                    <View style={styles.accountBox}>
+                    <TouchableOpacity 
+                        style={styles.accountBox}
+                        onPress={() => navigation.navigate('User')}
+                    >
                         <Avatar.Image size={24} source={require('../../../assets/product/cuisse.jpg')} />
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
                 <ScrollView
