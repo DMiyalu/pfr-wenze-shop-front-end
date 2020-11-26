@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         backgroundColor: "white",
-        paddingBottom: 60,
+        paddingBottom: 20,
     },
     main: {
         display: "flex",

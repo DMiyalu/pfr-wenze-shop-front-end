@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     panier: {
         listFruits: [],
         total: 0,
-        netToPay: 0
+        deliveryCost: 2000,
+        netToPay: 0,
     }
 }
 

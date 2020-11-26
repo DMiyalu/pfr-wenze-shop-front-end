@@ -26,15 +26,11 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
         const [count, setCount] = useState(1)
-        let newProduct = {...product}
 
 
-        const setCountProduct = (data) => {
-            newProduct.number = data
-            setCount(data)
-        }
+   
 
-
+        //displays an alert
         const createAlertButton = () => {
             Alert.alert(
                 'Ajout article',
@@ -50,32 +46,35 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
             )
         }
 
+
+        // Check if the product is already in the cart
         const testProductExistAlready = () => {
 
             for (let element of panier.listFruits) {
-                if (newProduct.productID === element.productID) return true
+                if (product.productID === element.productID) return true
                 else continue
             }
             return false
         }
 
+        //Validate the action of adding
         const callValidation = async () => {
             await  
             (testProductExistAlready()) ? createAlertButton() : addToShoppingCart()
         }
  
+        // Add the product to the cart
         const addToShoppingCart = async () => {
-            // set count product
-            newProduct.number = count
+            console.log("add product")
+            let postProduct = {...product}
+            postProduct.number = count
 
-            let newState = { ...panier }
-            await newState.listFruits.push(newProduct)
+            let postPanier = {...panier}
+            postPanier.total += (postProduct.number * postProduct.price)
+            postPanier.netToPay += postPanier.total + postPanier.deliveryCost
+            postPanier.listFruits.push(postProduct)
 
-            // set new total and netToPay
-            newState.total += (newProduct.price * newProduct.number)
-            
-            console.log('newState: ', newState)
-            dispatch(getPanier(newState))
+            dispatch(getPanier(postPanier))
         }
 
         return (
@@ -119,7 +118,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                             if (count > 1) setCount(count - 1)
                                         }}
                                     >
-                                        -
+                                        <Text>-</Text>
                                     </TouchableOpacity>
                                     <TextInput 
                                         placeholder={count} 
@@ -134,7 +133,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                         style={styles.sign}
                                         onPress={() => setCount(count + 1)}
                                     >
-                                        +
+                                        <Text>+</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
