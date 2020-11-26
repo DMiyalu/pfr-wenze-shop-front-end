@@ -1,4 +1,18 @@
 import { StyleSheet, Dimensions } from 'react-native'
+import styled from 'styled-components/native'
+
+
+export const TextTop = styled.TouchableOpacity`
+    color: blue;
+    font-size: 18;
+    font-weight: 700;
+    text-align: center;
+    padding-horizontal: 15;
+    transition: all 0.5s ease-in;
+    :hover {
+        color: red;
+    }
+`
 
 
 const { width, height } = Dimensions.get('window')
@@ -52,13 +66,6 @@ export const styles = StyleSheet.create({
         marginVertical: 10,
     },
     titleTopText: {
-        fontSize: 18,
-        fontWeight: '700',
-        textAlign: 'center',
-        paddingHorizontal: 15,
-        transition: 'all 0.5s',
-    },
-    titleTopText: !pressed {
         color: 'blue',
     },
     productSection: {

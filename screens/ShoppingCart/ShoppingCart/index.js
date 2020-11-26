@@ -11,7 +11,7 @@ import {
     StatusBar   
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { styles, getViewStyle } from './style'
+import { styles, getViewStyle, TextTop } from './style'
 
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
@@ -43,10 +43,10 @@ const ShoppingCart = ({ navigation }) => {
         return (
             <View>
             <View style={styles.titleTop}>
-                <Text style={styles.titleTopText}>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</Text>
+                <TextTop>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</TextTop>
             </View>
             {panier.listFruits.map((fruit) =>
-                <View style={getViewStyle()}>
+                <View style={getViewStyle()} key={fruit._id}>
                     <View key={fruit._id} style={styles.uiSectionBox} >
                         <View style={styles.imageBox}>
                             <Image
