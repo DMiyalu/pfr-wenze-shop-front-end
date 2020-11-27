@@ -47,7 +47,7 @@ const ShoppingCart = ({ navigation }) => {
             </View>
             {panier.listFruits.map((fruit) =>
                 <View style={getViewStyle()} key={fruit._id}>
-                    <View key={fruit._id} style={styles.uiSectionBox} >
+                    <View style={styles.uiSectionBox} >
                         <View style={styles.imageBox}>
                             <Image
                                 style={styles.imageFile}
@@ -81,6 +81,12 @@ const ShoppingCart = ({ navigation }) => {
     return (
             <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
+                <MaterialCommunityIcons 
+                    name="menu-left" 
+                    color="#222"
+                    size={35}
+                    onPress={() => navigation.goBack()}
+                />
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.main}>
                         <View style={styles.productSection}>

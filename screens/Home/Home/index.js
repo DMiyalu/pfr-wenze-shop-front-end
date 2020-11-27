@@ -118,7 +118,7 @@ const Home = ({ navigation }) => {
             title: product.title,
             description: product.description,
             price: product.price,
-            number: product.number,
+            number: 1,
             image: product.image,
             unite: product.unite,
         }))

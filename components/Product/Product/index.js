@@ -21,17 +21,18 @@ import {
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
  
-    const Product = ({ route, navigation }) => {
+    const product = ({ route, navigation }) => {
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
+        const [indexProduct, setIndexProduct] = useState(0)
         const [count, setCount] = useState("1")
 
 
    
 
         //displays an alert
-        const createAlertButton = () => {
+        const displayAlertButton = () => {
             Alert.alert(
                 'Ajout article',
                 'Cet article est déjà dans le panier !',
@@ -48,31 +49,44 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 
         // Check if the product is already in the cart
-        const testProductExistAlready = () => {
-
+        const testProductIsAlready = () => {
             for (let element of panier.listFruits) {
                 if (product._id === element._id) return true
-                else continue
             }
             return false
         }
 
-        //Validate the action of adding
-        const callValidation = async () => {
-            await  
-            (testProductExistAlready()) ? createAlertButton() : addToShoppingCart()
+        // The product is already: Check if the number has changed
+        const checkNumberSelected = () => {
+            console.log('check')
+            setIndexProduct(panier.listFruits.findIndex((element) => element._id === product._id))
+            if (panier.listFruits[indexProduct].number === parseInt(count)) {displayAlertButton()}
+            else {updateNumber(indexProduct, parseInt(count))}
+        }
+
+
+        // Update number product 
+        const updateNumber = (indexProduct, countValue) => {
+            console.log('update', indexProduct, countValue)
+            //update from the store
+        }
+
+
+        // Validate the add action
+        const callValidation = () => {
+            (testProductIsAlready()) ? checkNumberSelected() : addToShoppingCart()
         }
  
-        // Add the product to the cart
+        // Add the product to the store
         const addToShoppingCart = async () => {
             console.log("add product")
-            let postProduct = {...product}
-            postProduct.number = parseInt(count)
+            let postproduct = {...product}
+            postproduct.number = parseInt(count)
 
             let postPanier = {...panier}
-            postPanier.total += (postProduct.number * postProduct.price)
+            postPanier.total += (postproduct.number * postproduct.price)
             postPanier.netToPay += postPanier.total + postPanier.deliveryCost
-            postPanier.listFruits.push(postProduct)
+            postPanier.listFruits.push(postproduct)
 
             dispatch(getPanier(postPanier))
         }
@@ -91,7 +105,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                 <Text style={styles.titleDetails}>Détails produit</Text>
                 <TouchableOpacity 
                     style={styles.accountBox}
-                    onPress={() => navigation.navigate('Product')}
+                    onPress={() => navigation.navigate('product')}
                 >
                     <Avatar.Image style={styles.accountIcon} size={24} source={require('../../../assets/product/bananes.jpg')} />
                 </TouchableOpacity>
@@ -142,7 +156,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                     </View>
                     <View style={styles.buttonBox}>
                         <TouchableOpacity
-                            onPress={() => callValidation()}
+                            onPress={() => {callValidation()}}
                             style={styles.boutonAjouter}
                         >
                             <Text style={{ color: "white", fontSize: 16, fontWeight: '600' }}>Ajouter</Text>
@@ -155,4 +169,4 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     }
 
 
-export default Product
+export default product

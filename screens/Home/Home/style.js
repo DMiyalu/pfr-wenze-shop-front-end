@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingBottom: 10,
+        paddingBottom: 5,
     },
     resultsBox: {
         marginBottom: 20,
@@ -96,7 +96,7 @@ export const styles = StyleSheet.create({
         color: "rgba(0, 0, 0, 0.4) ",
     },
     section: {
-        marginTop: 40,
+        paddingVertical: 5,
     },
     sectionCategories: {
         fontSize: 16,

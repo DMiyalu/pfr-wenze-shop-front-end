@@ -37,14 +37,17 @@ const styles = StyleSheet.create({
     accountIcon: {
     },
     description: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: "300",
         color: "black",
         marginVertical: 5,
         paddingRight: 5,
     },
     price: {
-        fontSize: 18,
+        fontSize: 16,
+    },
+    totalValue: {
+        fontSize: 16,
     },
     imageBox: {
         display: "flex",
