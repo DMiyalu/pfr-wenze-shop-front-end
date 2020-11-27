@@ -75,7 +75,9 @@ const Home = ({ navigation }) => {
                         style={styles.sectionImageBox}
                         onPress={() => {showOneProduct(product)}}
                     >
-                        <Image style={styles.imageFile} source={product.image} />
+                        <Image style={styles.imageFile} source={{
+                            uri: product.image,
+                        }} />
                     </TouchableOpacity>
                 )}
             </ScrollView>

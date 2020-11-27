@@ -46,7 +46,6 @@ export const styles = StyleSheet.create({
     textTop: {
         fontSize: 24,
         fontWeight: '700',
-        fontFamily: "Exo-Light",
         paddingHorizontal: 20,
         color: "rgba(0, 0, 0, 0.8)",
     },
@@ -87,6 +86,7 @@ export const styles = StyleSheet.create({
         resizeMode: "cover",
         borderRadius: 5,
     },
+
     imageDescription: {
         fontWeight: '700',
         color: "rgba(0, 0, 0, 0.8) ",
@@ -105,7 +105,6 @@ export const styles = StyleSheet.create({
     },
     sectionTitre: {
         fontSize: 24,
-        fontFamily: "Exo-Light",
         fontWeight: '700',
         marginTop: 10,
         paddingHorizontal: 20,

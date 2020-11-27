@@ -12,6 +12,8 @@ export class UserEntry extends Component {
                 <NavigationContainer independent={true}>
                     <Stack.Navigator initialRouteName="User">
                         <Stack.Screen name="User" component={User} options={{ headerShown: false }} />
+                        <Stack.Screen name="CreateAccount" component={User} options={{ headerShown: false }} />
+                        <Stack.Screen name="ConnectedAccount" component={User} options={{ headerShown: false }} />
                     </Stack.Navigator>
                 </NavigationContainer>
         )

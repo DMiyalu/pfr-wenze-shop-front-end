@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import ShoppingCart from './ShoppingCart'
 import Payment from './Payment'
 import Service from './Service'
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 
 export class ShoppingCartEntry extends Component {

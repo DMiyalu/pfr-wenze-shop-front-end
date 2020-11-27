@@ -15,7 +15,9 @@ import {
             >
                 <View style={styles.imageBox} >
                     <Image 
-                        source={props.imageUri} 
+                        source={{
+                            uri: props.imageUri,
+                        }}
                         style={styles.imageFile}
                     />
                 </View>

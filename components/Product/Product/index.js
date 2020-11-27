@@ -25,7 +25,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
-        const [count, setCount] = useState(1)
+        const [count, setCount] = useState("1")
 
 
    
@@ -67,7 +67,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const addToShoppingCart = async () => {
             console.log("add product")
             let postProduct = {...product}
-            postProduct.number = count
+            postProduct.number = parseInt(count)
 
             let postPanier = {...panier}
             postPanier.total += (postProduct.number * postProduct.price)
@@ -83,12 +83,12 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                 <View style={styles.returnIcon}>
                     <MaterialCommunityIcons 
                         name="menu-left" 
-                        color="white" 
-                        size={35} 
-                        style={{ position: 'relative', left: 0, marginLeft: 0 }}
+                        color="#222"
+                        size={35}
                         onPress={() => navigation.goBack()}
                     />
                 </View>
+                <Text style={styles.titleDetails}>Détails produit</Text>
                 <TouchableOpacity 
                     style={styles.accountBox}
                     onPress={() => navigation.navigate('Product')}
@@ -99,11 +99,10 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >
                 <View style={styles.main} >
                     <View style={styles.imageBox} >
-                        <Image style={styles.imageFile} source={product.image} />
+                        <Image style={styles.imageFile} source={{ uri: product.image,}} />
                     </View>
                     <View style={styles.details}>
                         <Text style={styles.topTitle}>{product.title}</Text>
-                        <Text style={styles.line}></Text>
                         <Text style={styles.description}>{product.description}</Text>
                         <Text style={styles.price}>Prix: {product.price} Fc/ {product.unite}</Text>
                         <Text style={styles.price}>TVA: 0.0 Fc</Text>
@@ -118,23 +117,22 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                                     <TouchableOpacity
                                         style={styles.sign}
                                         onPress={() => {
-                                            if (count > 1) setCount(count - 1)
+                                            if (parseInt(count) > 1) setCount((parseInt(count) - 1).toString())
                                         }}
                                     >
                                         <Text style={styles.signUI}>-</Text>
                                     </TouchableOpacity>
                                     <TextInput 
-                                        placeholder={count} 
                                         style={styles.input}
-                                        underlineColorAndroid="gray"
                                         selectionColor="blue"
                                         maxLength={3}
                                         keyboardType='numeric'
                                         onChangeText={(value) => setCount(value)}
+                                        value={count}
                                     />
                                     <TouchableOpacity
                                         style={styles.sign}
-                                        onPress={() => setCount(count + 1)}
+                                        onPress={() => {setCount((parseInt(count) + 1).toString())}}
                                     >
                                         <Text style={styles.signUI}>+</Text>
                                     </TouchableOpacity>
@@ -142,7 +140,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                             </View>
                         </View>
                     </View>
-                    <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={styles.buttonBox}>
                         <TouchableOpacity
                             onPress={() => callValidation()}
                             style={styles.boutonAjouter}

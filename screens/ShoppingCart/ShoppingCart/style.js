@@ -8,10 +8,6 @@ export const TextTop = styled.TouchableOpacity`
     font-weight: 700;
     text-align: center;
     padding-horizontal: 15;
-    transition: all 0.5s ease-in;
-    :hover {
-        color: red;
-    }
 `
 
 
@@ -23,16 +19,12 @@ export const styles = StyleSheet.create({
         backgroundColor: "#fff",
         marginHorizontal: 0,
         marginVertical: 0,
-        paddingBottom: 90,
+        paddingBottom: 80,
         width: width,
         height: height,    
     },
     main: {
         paddingHorizontal: 10,
-    },
-    pickerStyle: { 
-        height: 50,
-        width: 100,
     },
     uiTextPrice: {
         color:'rgba(122, 119, 255, 1)', 
@@ -53,7 +45,8 @@ export const styles = StyleSheet.create({
         width: width - 40, 
         display: 'flex', 
         justifyContent: 'center', 
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 15,
     },
     uiButtonText: {
         color: 'rgba(245, 62, 82, 0.6)', 
@@ -66,7 +59,11 @@ export const styles = StyleSheet.create({
         marginVertical: 10,
     },
     titleTopText: {
-        color: 'blue',
+        color: '#003',
+        fontSize: 18,
+        fontWeight: '700',
+        textAlign: 'center',
+        paddingHorizontal: 15,
     },
     productSection: {
         display: 'flex',
@@ -101,6 +98,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 1,
         borderBottomColor: '#dedede',
+        marginVertical: 5,
     },
     details: {
         flex: 3,
@@ -114,7 +112,9 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     total: {
-        flex: 1,
+        flex: 2,
+        textAlign: 'right',
+        right: 5,
     },
     cost: {
         flex: 3,
@@ -148,12 +148,14 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
     },
     resumeTextRight: {
-        flex: 1,
-        marginLeft: -12,
+        flex: 2,
+        textAlign: 'right',
+        right: 5,
     },
     resumeTotalRight: {
-        flex: 1,
-        marginLeft: -12,
+        flex: 2,
+        textAlign: 'right',
+        right: 5,
         fontWeight: '700',
     },
     boutonBox: {

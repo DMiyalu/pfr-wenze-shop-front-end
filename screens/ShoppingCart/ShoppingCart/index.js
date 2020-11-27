@@ -43,7 +43,7 @@ const ShoppingCart = ({ navigation }) => {
         return (
             <View>
             <View style={styles.titleTop}>
-                <TextTop>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</TextTop>
+                <Text style={styles.titleTopText}>VOUS AVEZ {panier.listFruits.length} PRODUITS DANS VOTRE PANIER</Text>
             </View>
             {panier.listFruits.map((fruit) =>
                 <View style={getViewStyle()} key={fruit._id}>
@@ -51,7 +51,9 @@ const ShoppingCart = ({ navigation }) => {
                         <View style={styles.imageBox}>
                             <Image
                                 style={styles.imageFile}
-                                source={fruit.image}
+                                source={{
+                                    uri: fruit.image,
+                                }}
                             />
                         </View>
                         <View style={styles.details}>

@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         backgroundColor: "white",
-        paddingBottom: 20,
     },
     main: {
         display: "flex",
@@ -15,17 +14,25 @@ const styles = StyleSheet.create({
     header: {
         display: 'flex',
         flexDirection: 'row',
+        height: 45,
         alignItems: 'center',
         backgroundColor: "rgba(245, 62, 82, 0.6)",
     },
     returnIcon: {
-        flex: 5,
+        flex: 1,
+    },
+    titleDetails: {
+        flex: 2,
+        fontSize: 18,
+        fontWeight: '700',
+        textAlign: 'center',
+        color: 'white',
     },
     accountBox: {
         flex: 1,
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-end',
+        right: 10,
     },
     accountIcon: {
     },
@@ -44,7 +51,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 210,
         width: width,
-        position: 'fixe',
     },
     imageFile: {
         flex: 1,
@@ -61,7 +67,7 @@ const styles = StyleSheet.create({
     topTitle: {
         fontSize: 26,
         fontWeight: '700',
-        fontColor: 'black',
+        color: 'black',
     },
     boutonAjouter: {
         display: 'flex',
@@ -76,14 +82,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         marginTop: 20,  
     },
-    line: {
-        borderWidth: 1,
-        borderColor: "rgba(245, 62, 82, 0.6)",
-        width: 50,
-        padding: 0,
-        marginTop: 5,
-        marginBottom: 5,
-    },
+
     totalEtQuantite: {
         display: 'flex',
         flexDirection: 'row',
@@ -134,6 +133,12 @@ const styles = StyleSheet.create({
     },
     signUI: {
         textAlign: 'center',
+    },
+    buttonBox: { 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        paddingBottom: 15,
     }
 })
 
