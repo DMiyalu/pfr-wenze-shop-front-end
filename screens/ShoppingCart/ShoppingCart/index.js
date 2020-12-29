@@ -8,18 +8,20 @@ import {
     Image, 
     ScrollView, 
     TouchableOpacity,
-    StatusBar   
+    StatusBar,
+    Alert,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { styles, getViewStyle, TextTop } from './style'
+import { styles, getViewStyle } from './style'
 
 
 const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 const ShoppingCart = ({ navigation }) => {
     const [number, setNumber] = useState(0)
-    const dispatch = useDispatch()
     const [shoppingCartEmpty, setShoppingCartEmpty] = useState(false)
+    const [userAuth, setUserAuth] = useState(false)
+    const dispatch = useDispatch()
     const { panier } = useSelector((state) => state.panier)
 
     const showEmptyScreen = () => {
@@ -72,21 +74,32 @@ const ShoppingCart = ({ navigation }) => {
         )
     }
 
-
-    const payOrder = () => {
-        navigation.navigate('Payment')
+    //displays an alert
+    const displayAlertButton = () => {
+        Alert.alert(
+            'Panier vide !',
+            'Votre panier est vide, veuillez ajouter des articles.',
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Action annulée !'),
+                    style: 'cancel'
+                }
+            ],
+            {cancelable: false}
+        )
+    }
+    
+    const checkUserAuth = () => {
+        if (panier.listFruits.length === 0) {displayAlertButton()}
+        else if (userAuth) {navigation.navigate('Service')}
+        else {navigation.navigate('SignUp')}
     }
 
 
     return (
             <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="rgba(245, 62, 82, 0.6)" />
-                <MaterialCommunityIcons 
-                    name="menu-left" 
-                    color="#222"
-                    size={35}
-                    onPress={() => navigation.goBack()}
-                />
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.main}>
                         <View style={styles.productSection}>
@@ -108,7 +121,7 @@ const ShoppingCart = ({ navigation }) => {
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
-                            onPress={() => payOrder()}
+                            onPress={() => checkUserAuth()}
                         >
                             <View style={styles.boutonBox}>
                                 <Text style={styles.uiButtonText}>Commander</Text>

@@ -11,15 +11,13 @@ import {
     Image,
     SafeAreaView, 
     StatusBar,
-    Picker,
     TextInput,
     ScrollView, 
     TouchableOpacity,
-    Alert
+    alert
 } from 'react-native'
 
 
-const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
  
     const product = ({ route, navigation }) => {
         const dispatch = useDispatch()
@@ -32,8 +30,8 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
    
 
         //displays an alert
-        const displayAlertButton = () => {
-            Alert.alert(
+        const displayalertButton = () => {
+            alert.alert(
                 'Ajout article',
                 'Cet article est déjà dans le panier !',
                 [
@@ -60,7 +58,7 @@ const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         const checkNumberSelected = () => {
             console.log('check')
             setIndexProduct(panier.listFruits.findIndex((element) => element._id === product._id))
-            if (panier.listFruits[indexProduct].number === parseInt(count)) {displayAlertButton()}
+            if (panier.listFruits[indexProduct].number === parseInt(count)) {displayalertButton()}
             else {updateNumber(indexProduct, parseInt(count))}
         }
 

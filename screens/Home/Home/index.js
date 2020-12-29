@@ -26,6 +26,9 @@ const Home = ({ navigation }) => {
     const [textSearch, setTextSearch] = useState("matembele")
     const [displayState, setDisplayState] = useState("none")
     const dispatch = useDispatch()
+    const [villeDepart, setVD] = useState('')
+    const [villeArrivee, setVA] = useState('')
+
 
 
     //Affiche un rendu de chargement des données(loader 1)
@@ -128,6 +131,7 @@ const Home = ({ navigation }) => {
 
     //Rend visible la section des resultats d'une recherche
     const getSearchData = () => {
+        //axios
         setDisplayState("flex")
     }
 
