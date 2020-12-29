@@ -11,19 +11,20 @@ import {
     StatusBar,
     Alert,
 } from 'react-native'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { styles, getViewStyle } from './style'
 
 
-const listValueCount = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 const ShoppingCart = ({ navigation }) => {
     const [number, setNumber] = useState(0)
     const [shoppingCartEmpty, setShoppingCartEmpty] = useState(false)
-    const [userAuth, setUserAuth] = useState(false)
+    const [userAuth, setuserAuth] = useState(false)
+    const [authState, setauthState] = useState(null)
+
     const dispatch = useDispatch()
     const { panier } = useSelector((state) => state.panier)
 
+    
     const showEmptyScreen = () => {
         return (
             <View style={styles.emptyBox}>
@@ -90,11 +91,13 @@ const ShoppingCart = ({ navigation }) => {
         )
     }
     
-    const checkUserAuth = () => {
+    const checkuserAuth = () => {
         if (panier.listFruits.length === 0) {displayAlertButton()}
         else if (userAuth) {navigation.navigate('Service')}
         else {navigation.navigate('SignUp')}
     }
+
+    
 
 
     return (
@@ -121,7 +124,7 @@ const ShoppingCart = ({ navigation }) => {
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
-                            onPress={() => checkUserAuth()}
+                            onPress={() => checkuserAuth()}
                         >
                             <View style={styles.boutonBox}>
                                 <Text style={styles.uiButtonText}>Commander</Text>

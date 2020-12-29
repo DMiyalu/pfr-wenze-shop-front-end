@@ -7,9 +7,9 @@ import Service from './Service'
 import SignIn from '../../components/User/signIn'
 import SignUp from '../../components/User/signUp'
 
+
+
 const Stack = createStackNavigator()
-
-
 export class ShoppingCartEntry extends Component {
     render() {
         return (
