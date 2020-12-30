@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
+import { StorageKey } from '../../../lib/auth'
 import { 
     Text, 
     View, 
@@ -10,6 +11,7 @@ import {
     TouchableOpacity,
     StatusBar,
     Alert,
+    AsyncStorage,
 } from 'react-native'
 import { styles, getViewStyle } from './style'
 
@@ -18,12 +20,26 @@ import { styles, getViewStyle } from './style'
 const ShoppingCart = ({ navigation }) => {
     const [number, setNumber] = useState(0)
     const [shoppingCartEmpty, setShoppingCartEmpty] = useState(false)
-    const [userAuth, setuserAuth] = useState(false)
-    const [authState, setauthState] = useState(null)
-
+    const [authState, setAuthState] = useState(null)
     const dispatch = useDispatch()
     const { panier } = useSelector((state) => state.panier)
 
+    useEffect(() => {
+        (async () => {
+          let cachedAuth = await getCachedAuthAsync();
+          if (cachedAuth && !authState) {
+            setAuthState(cachedAuth);
+          }
+        })();
+    }, []);
+
+    const getCachedAuthAsync = async () => {
+        let value = await AsyncStorage.getItem(StorageKey)
+        let authState = JSON.parse(value)
+        console.log(`getCachedAuthAsync: ${authState}`)
+        if (authState) {return authState}
+        return null
+    }
     
     const showEmptyScreen = () => {
         return (
@@ -91,10 +107,16 @@ const ShoppingCart = ({ navigation }) => {
         )
     }
     
-    const checkuserAuth = () => {
+    const validateCart = async () => {
         if (panier.listFruits.length === 0) {displayAlertButton()}
-        else if (userAuth) {navigation.navigate('Service')}
-        else {navigation.navigate('SignUp')}
+        else if (authState) {
+            console.log(`user auth: ${authState}.`)
+            navigation.navigate('Service')
+        }
+        else {
+            console.log('user auth null, navigate to login or register.')
+            navigation.navigate('SignUp')
+        }
     }
 
     
@@ -124,7 +146,7 @@ const ShoppingCart = ({ navigation }) => {
                         </View>
                         <TouchableOpacity 
                             style={styles.uiButton}
-                            onPress={() => checkuserAuth()}
+                            onPress={() => validateCart()}
                         >
                             <View style={styles.boutonBox}>
                                 <Text style={styles.uiButtonText}>Commander</Text>

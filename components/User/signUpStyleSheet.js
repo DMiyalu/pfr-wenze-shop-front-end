@@ -17,8 +17,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         height: (height / 3) - 10,
         width: width,
-        borderBottomColor: 'rgba(200, 200, 200, 0.2)',
-        borderBottomWidth: 1,
         paddingBottom: 10,
     },
     title: {
@@ -39,11 +37,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     formItems: {
+        paddingTop: 20,
+    },
+    inputBox: {
         backgroundColor: 'rgba(200, 200, 200, 0.2)',
         paddingHorizontal: 55,
+        paddingVertical: 10,
+        marginVertical: 10,
     },
-    emailInput: {
-
+    inputSection: {
+        marginVertical: 10,
     },
     loginAndSingUp: {
         display: 'flex',
@@ -63,5 +66,27 @@ export const styles = StyleSheet.create({
     },
     textOr: {
         color: "#bbb",
+        marginHorizontal: 5,
+    },
+    textPassword: {
+        textAlign: 'left',
+        fontSize: 14,
+        fontWeight: '400',
+        color: '#fff'
+    },
+  
+    errorMessage: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    hideErrorMessage: {
+        display: 'none',
+    },
+    errorText: {
+        textAlign: 'left',
+        fontSize: 14,
+        fontWeight: '400',
+        color: 'rgba(200, 90, 90, 0.9)',
     }
 })
