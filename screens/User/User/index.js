@@ -10,8 +10,8 @@ import {
 
 const User = ({ navigation }) => {
     return (
-        <ImageBackground source={require('../../../assets/product/back.jpg')} style={styles.container}>
-            <Text>Connect</Text>            
+        <ImageBackground source={{ uri: 'https://www.cregybad.org/wp-content/uploads/2017/10/user.png' }} style={styles.container}>
+            <Text>Connect</Text>        
         </ImageBackground>
     )
 }

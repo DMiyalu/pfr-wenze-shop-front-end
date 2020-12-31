@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     },
     returnIcon: {
         flex: 1,
+        paddingLeft: 3,
     },
     titleDetails: {
         flex: 2,

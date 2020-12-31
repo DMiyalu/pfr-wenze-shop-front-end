@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
 import styles from './style'
-import Dialog, { DialogContent, SlideAnimation } from 'react-native-popup-dialog'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Avatar } from 'react-native-paper'
 import { 
@@ -10,7 +9,6 @@ import {
     View,  
     Image,
     SafeAreaView, 
-    StatusBar,
     TextInput,
     ScrollView, 
     TouchableOpacity,
@@ -19,7 +17,7 @@ import {
 
 
  
-    const product = ({ route, navigation }) => {
+    const product = ({ navigation }) => {
         const dispatch = useDispatch()
         const { product } = useSelector((state) => state.product)
         const { panier } = useSelector((state) => state.panier)
@@ -94,18 +92,18 @@ import {
             <View style={styles.header}> 
                 <View style={styles.returnIcon}>
                     <MaterialCommunityIcons 
-                        name="menu-left" 
-                        color="#222"
-                        size={35}
+                        name="arrow-left" 
+                        color="white"
+                        size={25}
                         onPress={() => navigation.goBack()}
                     />
                 </View>
                 <Text style={styles.titleDetails}>Détails produit</Text>
                 <TouchableOpacity 
                     style={styles.accountBox}
-                    onPress={() => navigation.navigate('product')}
+                    onPress={() => navigation.navigate('User')}
                 >
-                    <Avatar.Image style={styles.accountIcon} size={24} source={require('../../../assets/product/bananes.jpg')} />
+                    <Avatar.Image style={styles.accountIcon} size={24} source={{ uri: 'https://www.cregybad.org/wp-content/uploads/2017/10/user.png' }} />
                 </TouchableOpacity>
             </View>
             <ScrollView scrollEventThrottle={20} showsVerticalScrollIndicator={false} >

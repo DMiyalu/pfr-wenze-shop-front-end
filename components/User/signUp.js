@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { styles, color } from './signUpStyleSheet.js'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { StorageKey } from '../../lib/auth'
+import { apiUrl } from '../../lib/api-wenzeshop.js'
+import axios from 'axios'
 import {
     SafeAreaView,
     TouchableOpacity,
@@ -10,7 +12,6 @@ import {
     TextInput,
     AsyncStorage,
 } from 'react-native'
-import axios from 'axios'
 
 
 const SignUp = ({ navigation }) => {
@@ -20,7 +21,7 @@ const SignUp = ({ navigation }) => {
 
     const login = () => {
         axios
-        .post('http://192.168.43.52:8080/user/login', {email: email, password: password})
+        .post(`${apiUrl}/user/login`, {email: email, password: password})
         .then(async (response) => {
             console.log(`response on post: ${JSON.stringify(response.data)}`)
             await AsyncStorage.setItem(StorageKey, JSON.stringify(response.data))

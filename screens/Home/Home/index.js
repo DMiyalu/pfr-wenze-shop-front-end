@@ -6,6 +6,7 @@ import { getProductList } from '../../../Redux/AllProduct/allProduct.actions'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import CardProduct from '../../../components/CardProduct'
 import axios from 'axios'
+import { apiUrl } from '../../../lib/api-wenzeshop'
 import { styles, getViewStyle } from './style'
 import { 
     Text,
@@ -20,14 +21,9 @@ import {
 
 
 const Home = ({ navigation }) => {
-    const [dataSearchResults, setDataSearchResults] = useState([])
     const { products } = useSelector((state) => state.products)
     const [isLoading, setIsLoading] = useState(false)
-    const [textSearch, setTextSearch] = useState("matembele")
-    const [displayState, setDisplayState] = useState("none")
     const dispatch = useDispatch()
-    const [villeDepart, setVD] = useState('')
-    const [villeArrivee, setVA] = useState('')
 
 
 
@@ -129,42 +125,10 @@ const Home = ({ navigation }) => {
     }
 
 
-    //Rend visible la section des resultats d'une recherche
-    const getSearchData = () => {
-        //axios
-        setDisplayState("flex")
-    }
-
-    //Rendu d'une recherche
-    const showSearchResultView = () => {
-        return (
-            <ScrollView
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-            >
-                {(products.filter((product) => product.categorie === "Farine")).map((product) => 
-                    <TouchableOpacity
-                        key={product._id}
-                        style={styles.touchableOpacityStyle}
-                        onPress={() => {showOneProduct(product)}}
-                    >
-                        <CardProduct
-                            imageUri={product.image}
-                            imageDescription={product.title.slice(0, 16)}
-                            imagePrice={product.price}
-                            unite={product.unite.slice(0, 5)}
-                        />
-                    </TouchableOpacity>
-                )}
-            </ScrollView>
-        )
-    }
-
-
     //Recupère les données via l'API et les envoies vers le store
     useEffect(() => {
         axios
-        .get('http://192.168.43.52:8080/product')
+        .get(`${apiUrl}/product`)
         .then(async(response) => {
             console.log("UseEffect start")
             console.log(response.data)
@@ -176,7 +140,7 @@ const Home = ({ navigation }) => {
 
         setIsLoading(true)
     }, [])
- 
+  
 
     return (
         <SafeAreaView style={styles.safeAreaViewStyle} >
@@ -189,7 +153,6 @@ const Home = ({ navigation }) => {
                             color="rgba(245, 62, 82, 0.6)" 
                             size={20} 
                             style={{ marginLeft: -4, marginRight: 10 }}
-                            onPress={() => getSearchData()}
                         />
                         <TextInput
                             style={styles.textSearch}
@@ -197,28 +160,19 @@ const Home = ({ navigation }) => {
                             placeholderTextColor="gray"
                             underlineColorAndroid="transparent"
                             clearTextOnFocus={false}
-                            onChangeText={(value) => setTextSearch(value)}
-                            onSubmitEditing={() => getSearchData()}
                         />
                     </View>
                     <TouchableOpacity 
                         style={styles.accountBox}
                         onPress={() => navigation.navigate('User')}
                     >
-                        <Avatar.Image size={24} source={require('../../../assets/product/cuisse.jpg')} />
+                        <Avatar.Image size={24} source={{ uri: 'https://www.cregybad.org/wp-content/uploads/2017/10/user.png' }} />
                     </TouchableOpacity>
                 </View>
-
                 <ScrollView
                     scrollEventThrottle={20}
                 >
                     <View style={styles.mainSliders} >
-                        <View style={getViewStyle(displayState)}>
-                            <Text style={{ paddingHorizontal: 20, paddingBottom: 10 }}>Resultats pour le mot "{textSearch}"</Text>
-                            <View>
-                                {showSearchResultView()}
-                            </View>
-                        </View>
                         <Text style={styles.textTop} >
                             Des légumes et des Viandes 100% Bio...
                         </Text>
