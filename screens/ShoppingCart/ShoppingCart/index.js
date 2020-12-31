@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPanier } from '../../../Redux/Panier/panier.actions'
 import { StorageKey } from '../../../lib/auth'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { 
     Text, 
     View, 
@@ -11,7 +12,6 @@ import {
     TouchableOpacity,
     StatusBar,
     Alert,
-    AsyncStorage,
 } from 'react-native'
 import { styles, getViewStyle } from './style'
 

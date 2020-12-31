@@ -12,7 +12,7 @@ import {
     TextInput,
     ScrollView, 
     TouchableOpacity,
-    alert
+    Alert
 } from 'react-native'
 
 
@@ -29,7 +29,7 @@ import {
 
         //displays an alert
         const displayalertButton = () => {
-            alert.alert(
+            Alert.alert(
                 'Ajout article',
                 'Cet article est déjà dans le panier !',
                 [

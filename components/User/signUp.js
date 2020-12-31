@@ -4,13 +4,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { StorageKey } from '../../lib/auth'
 import { apiUrl } from '../../lib/api-wenzeshop.js'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
     SafeAreaView,
     TouchableOpacity,
     View,
     Text,
     TextInput,
-    AsyncStorage,
 } from 'react-native'
 
 
