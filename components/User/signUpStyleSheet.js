@@ -88,5 +88,15 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '400',
         color: 'rgba(200, 90, 90, 0.9)',
+    },
+    userNotExist: {
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: '400',
+        color: 'rgba(200, 90, 90, 0.9)',
+    },
+    back: {
+        color: '#fff',
+        fontSize: 14,
     }
 })

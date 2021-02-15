@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { styles, color } from './signUpStyleSheet.js'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { StorageKey } from '../../lib/auth'
-import { apiUrl } from '../../lib/api-wenzeshop.js'
-import axios from 'axios'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
     SafeAreaView,
     TouchableOpacity,
@@ -17,23 +13,22 @@ import {
 const SignUp = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [passwordIsEqual, setPasswordIsEqual] = useState(true)
     const [inputState, setInputState] = useState(false)
 
-    const login = () => {
-        axios
-        .post(`${apiUrl}/user/login`, {email: email, password: password})
-        .then(async (response) => {
-            console.log(`response on post: ${JSON.stringify(response.data)}`)
-            await AsyncStorage.setItem(StorageKey, JSON.stringify(response.data))
-        })
-        .catch((error) => {console.log(error)})
-    }
 
     const validation = async () => {
-        if(email === "" || password === "") {setInputState(true)}
+        if(email === "" || password === "" || confirmPassword === "") {setInputState(true)}
         else {
-            await login()
-            navigation.navigate('Service')
+            if (password === confirmPassword) {
+                navigation.navigate('SignUpStepTwo', {
+                    email: email,
+                    password: password,
+                })
+            } else {
+                setPasswordIsEqual(false)
+            }
         }
     }
 
@@ -41,9 +36,9 @@ const SignUp = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
         <View style={styles.header}>
             <MaterialCommunityIcons name="cart" color={color} size={30} />
-            <Text style={styles.title}>Karibu</Text>
-            <Text style={styles.description}>Plus proche, plus vite, plus mieux.</Text>
+            <Text style={styles.title}>Inscription</Text>
         </View>
+        
         <View style={styles.formBox}>
             <View style={styles.formItems}>
                 <View style={inputState ? styles.errorMessage : styles.hideErrorMessage}>
@@ -75,17 +70,30 @@ const SignUp = ({ navigation }) => {
                         style={styles.inputBox}
                     />
                 </View>
+                <View style={styles.inputSection}>
+                    <Text style={styles.textPassword}>Confirmer mot de passe</Text>
+                    <TextInput 
+                        onChangeText={(value) => {setConfirmPassword(value)}}
+                        value={confirmPassword}
+                        placeholder="*******"
+                        placeholderTextColor="#aaa"
+                        textContentType="password"
+                        textAlign= "left"
+                        style={styles.inputBox}
+                    />
+                </View>
+                <View style={passwordIsEqual ? styles.hideErrorMessage : styles.errorMessage}>
+                    <Text style={styles.userNotExist}>
+                        Les mots de passe ne sont pas identiques.
+                    </Text>
+                </View>
                 
             </View>
             <View style={styles.loginAndSingUp}>
                 <TouchableOpacity
                     onPress={() => validation()}
                 >
-                    <Text style={styles.login}>Se connecter</Text>
-                </TouchableOpacity>
-                <Text style={styles.textOr}> ou </Text>
-                <TouchableOpacity>
-                    <Text style={styles.signUpText}>S'inscrire</Text>
+                    <Text style={styles.login}>Suivant</Text>
                 </TouchableOpacity>
             </View>
         </View>

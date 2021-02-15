@@ -22,11 +22,13 @@ const ShoppingCart = ({ navigation }) => {
     const [shoppingCartEmpty, setShoppingCartEmpty] = useState(false)
     const [authState, setAuthState] = useState(null)
     const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.user)
     const { panier } = useSelector((state) => state.panier)
 
     useEffect(() => {
         (async () => {
           let cachedAuth = await getCachedAuthAsync();
+            
           if (cachedAuth && !authState) {
             setAuthState(cachedAuth);
           }
@@ -36,8 +38,10 @@ const ShoppingCart = ({ navigation }) => {
     const getCachedAuthAsync = async () => {
         let value = await AsyncStorage.getItem(StorageKey)
         let authState = JSON.parse(value)
-        console.log(`getCachedAuthAsync: ${authState}`)
-        if (authState) {return authState}
+        console.log(`getCachedAuthAsync:  ${authState}`)
+        if (authState) {
+            return authState
+        }
         return null
     }
     
@@ -115,7 +119,7 @@ const ShoppingCart = ({ navigation }) => {
         }
         else {
             console.log('user auth null, navigate to login or register.')
-            navigation.navigate('SignUp')
+            navigation.navigate('SignIn')
         }
     }
 

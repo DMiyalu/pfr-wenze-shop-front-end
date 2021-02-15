@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 10,
         color: '#005'
+    },
+    adresse: {
+        textAlign: 'center',
+        padding: 10,
+        marginTop: 20,
+        color: '#005'
     }
 })
 
