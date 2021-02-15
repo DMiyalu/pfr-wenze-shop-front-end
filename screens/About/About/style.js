@@ -9,7 +9,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         width: width,
         height: height,
-        paddingBottom: 60,
+    },
+    scrollView: {
+        height: height,
+        width: width,
     },
     header: {
         height: 85,
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
     },
     textHeader: {
         color: '#fff',
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: '800',
         textAlign: 'center',
     },
@@ -49,10 +52,16 @@ const styles = StyleSheet.create({
     },
     textDetails: {
         textAlign: 'left',
-        fontSize: 20,
+        fontSize: 14,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
+    },
+    phone: {
+        color: 'blue',
+    },
+    whatsapp: {
+        color: 'green'
     }
 })
 

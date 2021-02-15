@@ -14,6 +14,7 @@ import {
     View,  
     SafeAreaView,
     ScrollView,
+    RefreshControl,
     Image,
     TouchableOpacity,
     StatusBar
@@ -23,8 +24,9 @@ import {
 const Home = ({ navigation }) => {
     const { products } = useSelector((state) => state.products)
     const [isLoading, setIsLoading] = useState(false)
+    const [textSearch, setTextSearch] = useState("")
+    const [refreshing, setRefreshing] = React.useState(false);
     const dispatch = useDispatch()
-
 
 
     //Affiche un rendu de chargement des données(loader 1)
@@ -140,6 +142,17 @@ const Home = ({ navigation }) => {
 
         setIsLoading(true)
     }, [])
+
+    const wait = (timeout) => {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+    }      
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(400).then(() => setRefreshing(false));
+    }, []);
+
+    
   
 
     return (
@@ -153,6 +166,9 @@ const Home = ({ navigation }) => {
                             color="rgba(245, 62, 82, 0.6)" 
                             size={20} 
                             style={{ marginLeft: -4, marginRight: 10 }}
+                            onPress={() => navigation.navigate('SearchProduct', {
+                                text: textSearch,
+                            })}
                         />
                         <TextInput
                             style={styles.textSearch}
@@ -160,6 +176,10 @@ const Home = ({ navigation }) => {
                             placeholderTextColor="gray"
                             underlineColorAndroid="transparent"
                             clearTextOnFocus={false}
+                            onChangeText= {(value) => setTextSearch(value)}
+                            onSubmitEditing={() => navigation.navigate('SearchProduct', {
+                                text: textSearch,
+                            })}
                         />
                     </View>
                     <TouchableOpacity 
@@ -171,6 +191,14 @@ const Home = ({ navigation }) => {
                 </View>
                 <ScrollView
                     scrollEventThrottle={20}
+                    refreshControl={
+                        <RefreshControl
+                          refreshing={refreshing}
+                          onRefresh={onRefresh}
+                          progressBackgroundColor='#rgba(245, 62, 82, 0.6)'
+                          tintColor='#fff'
+                        />
+                    }
                 >
                     <View style={styles.mainSliders} >
                         <Text style={styles.textTop} >

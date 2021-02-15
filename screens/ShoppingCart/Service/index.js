@@ -18,14 +18,13 @@ const Service = ({ navigation }) => {
 
     useEffect(() => {
         (async () => {
+            console.log(`userAuth-redux: ${user['token']}`)
             let cachedAuth = await AsyncStorage.getItem(StorageKey)
 
             if (cachedAuth && !authState) {
                 await setAuthState(cachedAuth);
                     console.log(`userAuth: ${authState}`);
-                    console.log(`redux: ${user}`);
 
-                // console.log(`cachedAuth: ${cachedAuth}`);
             }
         })();
     }, []);
@@ -37,8 +36,8 @@ const Service = ({ navigation }) => {
             <ScrollView scrollEventThrottle={22}>
                 <View>
                     <Text style={styles.title}>Commande reçue !</Text>
-                    <Text style={styles.text}>Merci {JSON.parse(authState).token} d'avoir passé votre commande. Vos produits vous seront livrés dans moins d'une heure, par un des nos livreurs. Merci pour votre confiance.</Text>
-                    <Text style={styles.adresse}>Adresse de livraison: {JSON.parse(authState)}.</Text>
+                    <Text style={styles.text}>Merci {authState ? JSON.parse(authState).token : null} d'avoir passé votre commande. Vos produits vous seront livrés dans moins d'une heure, par un des nos livreurs. Merci pour votre confiance.</Text>
+                    <Text style={styles.adresse}>Adresse de livraison: {authState}.</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>

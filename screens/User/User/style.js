@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: height,
         width: width,
-        resizeMode: 'cover',
     },
 })
 
