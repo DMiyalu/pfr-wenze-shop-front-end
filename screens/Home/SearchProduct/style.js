@@ -31,4 +31,16 @@ export const styles = StyleSheet.create({
         flex: 7,
         marginLeft: -5,
     },
+    imageFile: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: "cover",
+        borderRadius: 5,
+    },
+    sectionImageBox: {
+        height: 230,
+        marginTop: 20,
+        borderRadius: 5,
+    },
 })
